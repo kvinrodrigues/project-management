@@ -1,1 +1,25 @@
-<p>navbar works!</p>
+<mat-toolbar class="navbar">
+    <button class="menu-but" type="button" mat-button (click)="toggle()" *ngIf="isAuthenticated()">
+        <mat-icon color="primary">menu</mat-icon>
+    </button>
+    <span style="margin-left: 10px; color: #00377D;">
+		<h2>olakase</h2>
+    </span>
+    <span class="spacer">
+    </span>
+    <div fxLayout="column" fxLayoutAlign="end end" *ngIf="isAuthenticated()">
+        <button style="margin-right: 20px;" [matMenuTriggerFor]="menu" mat-fab color="primary">
+            <mat-icon>person</mat-icon>
+        </button>
+    </div>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="profile()">
+            <mat-icon>person_pin</mat-icon>
+            <span>PEPE</span>
+        </button>
+        <button (click)="logout()" mat-menu-item>
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Salir</span>
+        </button>
+    </mat-menu>
+</mat-toolbar>

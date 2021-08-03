@@ -1,1 +1,23 @@
-<p>sidenav works!</p>
+<nav dropdown class="sidenav">
+  <button mat-menu-item routerLink="/home" routerLinkActive="active" (click)="toggle()" class="nav-button">
+    <mat-icon class="mat-icon">home</mat-icon>
+    <span class="button-title"><strong>Home</strong></span>
+  </button>
+  <mat-accordion>
+    <mat-expansion-panel hideToggle [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon style="color: white;">settings</mat-icon>
+        </mat-panel-title>
+        <mat-panel-description>
+          <span style="color: white;"><strong>Administracion</strong></span>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <button mat-menu-item routerLink="/department" *ngIf="checkRoles()" routerLinkActive="active"
+        (click)="toggle()" class="nav-button">
+        <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
+        <span><strong>Roles y Permisos</strong></span>
+      </button>
+    </mat-expansion-panel>
+  </mat-accordion>
+</nav>

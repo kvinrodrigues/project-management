@@ -12,4 +12,9 @@ export class SidenavComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  toggle() { }
+  isAuthenticated() {return true}
+  seeAdministrationMenu() {return true}
+  checkRoles() {return true}
+
 }

@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {SharedLibs} from '../shared/shared-libs';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     SharedLibs,
+    MatExpansionModule
   ],
   exports: [
     RouterModule,

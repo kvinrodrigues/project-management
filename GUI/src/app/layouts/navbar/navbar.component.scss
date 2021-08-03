@@ -1,0 +1,25 @@
+.navbar {
+    padding: 0 0 !important;
+    position: fixed;
+    height: 90px;
+    /*900*/
+    background-color: white;
+    z-index: 2;
+    top: 0px;
+    -webkit-box-shadow: 2px 16px 41px -26px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 2px 16px 41px -26px rgba(0, 0, 0, 0.51);
+    box-shadow: 2px 16px 41px -26px rgba(0, 0, 0, 0.51);
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.mat-icon {
+    margin-right: 0px;
+}
+
+.username {
+    margin-right: 10px;
+    margin-top: 5px;
+}
