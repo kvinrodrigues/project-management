@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {SharedLibs} from '../shared/shared-libs';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 
 const routes: Routes = [
@@ -28,7 +30,10 @@ const routes: Routes = [
     RouterModule,
 
   ],
-  declarations: [],
+  declarations: [
+    NavbarComponent,
+    SidenavComponent
+  ],
 })
 export class LayoutsModule {
 }
