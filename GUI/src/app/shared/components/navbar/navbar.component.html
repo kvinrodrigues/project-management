@@ -1,9 +1,9 @@
 <mat-toolbar class="navbar">
-    <button class="menu-but" type="button" mat-button (click)="toggle()" *ngIf="isAuthenticated()">
+    <button class="menu-but" type="button" mat-button (click)="toggle()" *ngIf="isAuthenticated() | async">
         <mat-icon color="primary">menu</mat-icon>
     </button>
     <span style="margin-left: 10px; color: #00377D;">
-		<h2>olakase</h2>
+        <h2>Gestion de Proyectos</h2>
     </span>
     <span class="spacer">
     </span>
@@ -15,7 +15,7 @@
     <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="profile()">
             <mat-icon>person_pin</mat-icon>
-            <span>PEPE</span>
+            <span>Nombre </span>
         </button>
         <button (click)="logout()" mat-menu-item>
             <mat-icon>exit_to_app</mat-icon>

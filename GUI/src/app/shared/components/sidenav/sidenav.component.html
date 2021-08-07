@@ -1,4 +1,4 @@
-<nav dropdown class="sidenav">
+<nav dropdown class="sidenav" *ngIf="isAuthenticated() | async">
   <button mat-menu-item routerLink="/home" routerLinkActive="active" (click)="toggle()" class="nav-button">
     <mat-icon class="mat-icon">home</mat-icon>
     <span class="button-title"><strong>Home</strong></span>
