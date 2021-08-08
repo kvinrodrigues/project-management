@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../../authentication/authentication.service";
 import {Router} from "@angular/router";
+import {LoginService} from "./login.service";
 
 @Component({
     selector: 'app-login',
@@ -9,12 +10,12 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
     authenticationError: boolean = false;
-    username: string = "";
+    email: string = "";
     password: string = "";
     loading = false;
     hide = true;
 
-    constructor(private authService: AuthenticationService, private router: Router) {
+    constructor(private loginService: LoginService, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -22,21 +23,31 @@ export class LoginComponent implements OnInit {
 
     login(): any {
         this.loading = true;
-        this.authService.authenticateMePls();
-        this.router.navigate(['home']);
+        this.loginService.login({
+            correo: this.email,
+            password: this.password
+        })
+            .then(() => {
+                this.authenticationError = false;
+                this.loading = false;
+                this.router.navigate(['home']);
+            })
+            .catch((error: any) => {
+                console.log(error);
+                this.authenticationError = true;
+                this.loading = false;
+            });
     }
 
     isLoginButtonEnabled() {
-        return (this.username && this.password) && !this.loading;
+        return (this.email && this.password) && !this.loading;
     }
 
     getErrorMessage() {
-        return "INVALID_LOGIN";
+        return "Favor, verifique usuario y contraseña";
     }
 
     protected showMessage(message: string, detail: string, severity: string) {
         // this.messageService.add({severity: severity, summary: message, detail: detail});
-
     }
-
 }

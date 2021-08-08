@@ -21,7 +21,7 @@
                         <input
                                 matInput
                                 placeholder="Ingrese nombre de usuario"
-                                [(ngModel)]="username"
+                                [(ngModel)]="email"
                                 name="username"
                                 autocomplete="nope"
                                 required
@@ -43,7 +43,7 @@
                         <mat-icon matSuffix (click)="hide = !hide">{{
                             hide ? 'visibility' : 'visibility_off'
                             }}</mat-icon>
-                        <mat-hint *ngIf="false" [ngStyle]="{ color: 'red' }" align="start"
+                        <mat-hint *ngIf="authenticationError" [ngStyle]="{ color: 'red' }" align="start"
                         >{{ getErrorMessage() }}
                         </mat-hint>
                     </mat-form-field>
