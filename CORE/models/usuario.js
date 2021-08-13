@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const UsuarioSchema = Schema({
     nombre: {
@@ -33,8 +33,9 @@ const UsuarioSchema = Schema({
 });
 
 
-UsuarioSchema.methods.toJSON = function () {
-    const {__v, password, _id, ...usuario} = this.toObject();
+UsuarioSchema.methods.toJSON = function() {
+    // eslint-disable-next-line no-unused-vars
+    const { __v, password, _id, ...usuario } = this.toObject();
     usuario.uid = _id;
     return usuario;
 }
