@@ -12,6 +12,8 @@ class Server {
         this.usuariosPath = '/api/usuarios';
         this.authPath = '/api/auth';
         this.proyectosPath = '/api/proyectos';
+        this.permisosPath = '/api/permisos';
+        this.rolesPath = '/api/roles';
 
         // Conectar a base de datos
         this.conectarDB();
@@ -46,6 +48,8 @@ class Server {
         this.app.use(this.authPath, require('../routes/auth'));
         this.app.use(this.usuariosPath, require('../routes/usuarios'));
         this.app.use(this.proyectosPath, require('../routes/proyectos'));
+        this.app.use(this.permisosPath, require('../routes/permisos'));
+        this.app.use(this.rolesPath, require('../routes/roles'));
     }
 
     listen() {
