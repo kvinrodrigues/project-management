@@ -8,13 +8,8 @@ const PermisoSchema = Schema({
     },
     descripcion: {
         type: String,
-        // required: [true, 'La descripcion del permiso es obligatorio']
-    },
-    estado: {
-        type: Boolean,
-        default: true
+        required: [true, 'La descripcion del permiso es obligatorio']
     }
-
 });
 
 PermisoSchema.methods.toJSON = function() {

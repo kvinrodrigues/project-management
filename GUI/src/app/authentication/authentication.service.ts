@@ -36,11 +36,6 @@ export class AuthenticationService {
   }
 
   login(credentials: any): Observable<any> {
-    const data = {
-      correo: credentials.correo,
-      password: credentials.password,
-    };
-
     const authenticateSuccess = (resp: any) => {
       const bearerToken = resp.headers.get('Authorization');
       if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
@@ -50,7 +45,7 @@ export class AuthenticationService {
       }
     }
 
-    return this.http.post(SERVER_API_URL + 'auth/login', data, { observe: 'response' }).pipe(map(authenticateSuccess.bind(this)));
+    return this.http.post(SERVER_API_URL + 'auth/login', credentials, { observe: 'response' }).pipe(map(authenticateSuccess.bind(this)));
   }
 
   private authenticateSuccess(resp: any): any {

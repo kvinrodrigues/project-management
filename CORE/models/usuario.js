@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const {Schema, model} = require('mongoose');
 
 const UsuarioSchema = Schema({
     nombre: {
@@ -14,28 +14,23 @@ const UsuarioSchema = Schema({
         type: String,
         required: [true, 'La contraseña es obligatoria'],
     },
+    rol: {
+        type: Schema.Types.ObjectId,
+        ref: "Role",
+        required: [true, 'El rol es obligatorio'],
+    },
     img: {
         type: String,
-    },
-    rol: {
-        type: String,
-        required: true,
-        enum: ['ADMIN_ROLE', 'USER_ROLE']
     },
     estado: {
         type: Boolean,
         default: true
-    },
-    google: {
-        type: Boolean,
-        default: false
-    },
+    }
 });
 
-
-UsuarioSchema.methods.toJSON = function() {
+UsuarioSchema.methods.toJSON = function () {
     // eslint-disable-next-line no-unused-vars
-    const { __v, password, _id, ...usuario } = this.toObject();
+    const {__v, password, _id, ...usuario} = this.toObject();
     usuario.uid = _id;
     return usuario;
 }
