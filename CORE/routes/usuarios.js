@@ -21,9 +21,15 @@ const {
 const router = Router();
 
 
-router.get('/', usuariosGet);
+router.get('/', [
+    validarJWT,
+    tieneRole('CONSULTAR_USUARIO'),
+], usuariosGet);
+
 
 router.put('/:id', [
+    validarJWT,
+    tieneRole('MODIFICAR_USUARIO'),
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(existeUsuarioPorId),
     check('rol').custom(esRoleValido),
@@ -31,6 +37,8 @@ router.put('/:id', [
 ], usuariosPut);
 
 router.post('/', [
+    validarJWT,
+    tieneRole('MODIFICAR_USUARIO'),
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('password', 'El password debe de ser más de 6 letras').isLength({min: 6}),
     check('correo', 'El correo no es válido').isEmail(),
@@ -42,7 +50,7 @@ router.post('/', [
 
 router.delete('/:id', [
     validarJWT,
-    tieneRole('ADMIN_ROLE'),
+    tieneRole('MODIFICAR_USUARIO'),
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(existeUsuarioPorId),
     validarCampos

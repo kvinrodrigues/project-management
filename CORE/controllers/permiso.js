@@ -5,7 +5,7 @@ const Permiso = require('../models/permiso');
 //Listar permisos
 const permisosGet = async(req = request, res = response) => {
     const { limite = 5, desde = 0 } = req.query;
-    const query = { estado: true };
+    const query = {};
 
     const [total, permisos] = await Promise.all([
         Permiso.countDocuments(query),
@@ -23,6 +23,7 @@ const permisosGet = async(req = request, res = response) => {
 //Crear un permiso
 const permisosPost = async(req, res = response) => {
     const nombre_permiso = req.body.nombre_permiso.toUpperCase();
+    const descripcion = req.body.descripcion;
     const permisoDB = await Permiso.findOne({ nombre_permiso });
 
     if (permisoDB) {
@@ -31,13 +32,14 @@ const permisosPost = async(req, res = response) => {
         });
     }
 
-    //Generar la data para guardar 
+    //Generar la data para guardar
     const data = {
-        nombre_permiso
+        nombre_permiso,
+        descripcion
     }
     const permiso = new Permiso(data);
 
-    //Guardar en la DB 
+    //Guardar en la DB
 
     await permiso.save();
 
@@ -47,7 +49,7 @@ const permisosPost = async(req, res = response) => {
 
 const permisosPut = async(req, res = response) => {
     const { id } = req.params;
-    const { estado, ...data } = req.body;
+    const {data } = req.body;
 
     data.nombre_permiso = data.nombre_permiso.toUpperCase();
 
