@@ -45,7 +45,7 @@ export class AuthenticationService {
       }
     }
 
-    return this.http.post(SERVER_API_URL + 'auth/login', credentials, { observe: 'response' }).pipe(map(authenticateSuccess.bind(this)));
+    return this.http.post(SERVER_API_URL + '/auth/login', credentials, { observe: 'response' }).pipe(map(authenticateSuccess.bind(this)));
   }
 
   private authenticateSuccess(resp: any): any {

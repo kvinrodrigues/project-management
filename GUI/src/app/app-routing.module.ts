@@ -17,6 +17,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/home/home.module').then((value) => value.HomeModule),
   },
+  {
+    path: 'permissions',
+    loadChildren: () =>
+      import('./pages/permissions/permissions.module').then(
+        (m) => m.PermissionsModule
+      ),
+  },
 ];
 
 @NgModule({
