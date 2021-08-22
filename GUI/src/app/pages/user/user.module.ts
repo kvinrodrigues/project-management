@@ -10,17 +10,20 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+
 
 // Project
-import { PermissionsRoutingModule } from './permissions-routing.module';
-import { PermissionsComponent } from './permissions.component';
+import { UserRoutingModule } from './user-routing.module';
+import { UserComponent } from './user.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
-  declarations: [PermissionsComponent],
+  declarations: [UserComponent],
   imports: [
     CommonModule,
-    PermissionsRoutingModule,
+    UserRoutingModule,
     MatCardModule,
     MatIconModule,
     MatProgressBarModule,
@@ -29,6 +32,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
+    MatTableModule,
+    MatButtonModule,
   ],
 })
-export class PermissionsModule {}
+export class UserModule {}
