@@ -1,8 +1,5 @@
 export interface Permissions {
-  permisos: {
-    estado: boolean;
     nombre_permiso: string;
+    descripcion: string;
     uid: string;
-  }[];
-  total: number;
 }

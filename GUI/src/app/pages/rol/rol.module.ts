@@ -13,16 +13,17 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 
+
 // Project
-import { PermissionsRoutingModule } from './permissions-routing.module';
-import { PermissionsComponent } from './permissions.component';
+import { RolRoutingModule } from './rol-routing.module';
+import { RolComponent } from './rol.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
-  declarations: [PermissionsComponent],
+  declarations: [RolComponent],
   imports: [
     CommonModule,
-    PermissionsRoutingModule,
+    RolRoutingModule,
     MatCardModule,
     MatIconModule,
     MatProgressBarModule,
@@ -33,7 +34,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ReactiveFormsModule,
     MatTableModule,
     MatButtonModule,
-    
   ],
 })
-export class PermissionsModule {}
+export class RolModule {}

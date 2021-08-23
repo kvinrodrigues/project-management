@@ -2,13 +2,13 @@
   <mat-card class="content">
     <mat-card-header class="header-page">
       <mat-card-title>
-        <h1>Permisos</h1>
+        <h1>Roles</h1>
       </mat-card-title>
     </mat-card-header>
     <mat-card-content fxLayout="column" fxLayoutAlign="center left">
       <mat-card-actions>
         <button mat-raised-button color="primary" (click)="addData()" class="demo-button">
-          Agregar 
+          Agregar
         </button>
       </mat-card-actions>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -16,22 +16,28 @@
         <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
-        <!-- Nombre Permiso Column -->
-        <ng-container matColumnDef="nombre_permiso">
-          <th mat-header-cell *matHeaderCellDef> Nombre Permiso </th>
-          <td mat-cell *matCellDef="let element"> {{element.nombre_permiso}} </td>
+        <!-- Estado Column -->
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef> Estado </th>
+          <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+        </ng-container>
+
+        <!-- Id Column -->
+        <ng-container matColumnDef="_id">
+          <th mat-header-cell *matHeaderCellDef> Id </th>
+          <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+        </ng-container>
+
+        <!-- Rol Column -->
+        <ng-container matColumnDef="rol">
+          <th mat-header-cell *matHeaderCellDef> Rol </th>
+          <td mat-cell *matCellDef="let element"> {{element.rol}} </td>
         </ng-container>
 
         <!-- Descripcion Column -->
         <ng-container matColumnDef="descripcion">
           <th mat-header-cell *matHeaderCellDef> Descripcion </th>
           <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
-        </ng-container>
-
-        <!-- Uid Column -->
-        <ng-container matColumnDef="uid">
-          <th mat-header-cell *matHeaderCellDef> Uid </th>
-          <td mat-cell *matCellDef="let element"> {{element.uid}} </td>
         </ng-container>
 
         <ng-container matColumnDef="acciones">

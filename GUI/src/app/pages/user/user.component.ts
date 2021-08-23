@@ -1,7 +1,7 @@
 import { User } from './../../shared/models/user';
 import {HttpResponse} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
-
+ 
 
 const ELEMENT_DATA: User[] = [
   {
