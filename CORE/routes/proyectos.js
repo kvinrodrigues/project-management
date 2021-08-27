@@ -7,6 +7,7 @@ const { validarCampos } = require('../middlewares');
 const {
     proyectosGet,
     proyectosPost,
+    proyectosPut,
     proyectosDelete
 } = require('../controllers/proyecto');
 
@@ -19,6 +20,11 @@ router.post('/', [
     check('descripcion', 'La descripcion es obligatoria').not().isEmpty(),
     validarCampos
 ], proyectosPost);
+
+router.put('/:id', [
+    check('id', 'No es un ID válido').isMongoId(),
+    validarCampos
+], proyectosPut)
 
 
 router.delete('/:id', [

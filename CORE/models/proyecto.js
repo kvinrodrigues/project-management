@@ -14,10 +14,11 @@ const ProyectoSchema = Schema({
         type: Boolean,
         default: true
     },
-    miembros: {
-        type: Array,
-        required: true
-    }
+    usuarios: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Usuario',
+        required: false
+    }]
 });
 
 
