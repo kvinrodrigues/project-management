@@ -1,0 +1,32 @@
+<div class="main-container" fxLayout="column" fxLayoutAlign="center center">
+    <h1>Crear o Editar Permiso</h1>
+    <form [formGroup]="dataValidationForm" (ngSubmit)="callOnSubmit()">
+        <div class="form-container__input" fxLayoutAlign="center stretch">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <label for="nombre_permiso">
+                    <input id="nombre_permiso" fxFlexFill formControlName="nombre_permiso" matInput
+                           placeholder="Nombre del permiso">
+                </label>
+            </mat-form-field>
+
+        </div>
+
+        <div class="form-container__input" fxLayoutAlign="center stretch">
+            <mat-form-field appearance="outline">
+                <mat-label>Descripcion</mat-label>
+                <label for="descripcion">
+                    <input id="descripcion" fxFlexFill formControlName="descripcion" matInput
+                           placeholder="Descripcion del permiso">
+                </label>
+            </mat-form-field>
+        </div>
+
+        <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
+            <button mat-raised-button color="primary" [disabled]="dataValidationForm?.invalid">
+                <mat-icon aria-hidden="false" aria-label="Continuar">navigate_next</mat-icon>
+                <span>Confirmar</span>
+            </button>
+        </mat-card-actions>
+    </form>
+</div>
