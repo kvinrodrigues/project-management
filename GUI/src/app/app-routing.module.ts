@@ -39,6 +39,13 @@ const routes: Routes = [
                 (module) => module.RolModule
             ),
     },
+    {
+        path: 'project',
+        loadChildren: () =>
+            import('./pages/project/project.module').then(
+                (module) => module.ProjectModule
+            ),
+    },
 ];
 
 @NgModule({
