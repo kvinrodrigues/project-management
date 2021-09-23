@@ -1,6 +1,6 @@
 // Angular
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 // Rx
 import {Observable} from 'rxjs';
@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 // Project
 import {environment} from 'src/environments/environment';
 import {User} from '../models/user';
+import {map} from "rxjs/operators";
 
 export type ENTITY_LIST_RESPONSE = {
     "total": Number,
@@ -21,8 +22,21 @@ export class UserService {
     constructor(private http: HttpClient) {
     }
 
-    getUsers(): Observable<ENTITY_LIST_RESPONSE> {
-        return this.http.get<ENTITY_LIST_RESPONSE>(`${environment.SERVER_API_URL}/usuarios`);
+    list(): Observable<ENTITY_LIST_RESPONSE> {
+        return this.http.get<ENTITY_LIST_RESPONSE>(`${environment.SERVER_API_URL}/proyectos`);
+    }
+
+    find(uid: string): Observable<User> {
+        const params = new HttpParams().append('uid', uid);
+
+        return this.http.get<ENTITY_LIST_RESPONSE>(`${environment.SERVER_API_URL}/proyectos`, {params})
+            .pipe(
+                map(value => value.usuarios[0])
+            );
+    }
+
+    create(user: User): Observable<User> {
+        return this.http.post<User>(`${environment.SERVER_API_URL}/usuarios`, user);
     }
 
     edit(user: User): Observable<User> {
@@ -33,3 +47,4 @@ export class UserService {
         return this.http.delete<User>(`${environment.SERVER_API_URL}/usuarios/${user.uid}`);
     }
 }
+ 

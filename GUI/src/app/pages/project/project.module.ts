@@ -18,9 +18,12 @@ import {MatButtonModule} from '@angular/material/button';
 import { ProjectRoutingModule } from './project-routing.module';
 import { ProjectComponent } from './project.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ProjectEditComponent } from './project-edit.component';
+import {MatInputModule} from "@angular/material/input";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
-  declarations: [ProjectComponent],
+  declarations: [ProjectComponent, ProjectEditComponent],
   imports: [
     CommonModule,
     ProjectRoutingModule,
@@ -34,6 +37,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ReactiveFormsModule,
     MatTableModule,
     MatButtonModule,
+    MatInputModule,
+    FlexLayoutModule,
   ],
 })
-export class ProjectModule {}
+export class ProjectModule {} 

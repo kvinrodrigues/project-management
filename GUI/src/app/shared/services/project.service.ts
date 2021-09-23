@@ -22,8 +22,21 @@ export class ProjectService {
     constructor(private http: HttpClient) {
     }
 
-    getUsers(): Observable<ENTITY_LIST_RESPONSE> {
+    list(): Observable<ENTITY_LIST_RESPONSE> {
         return this.http.get<ENTITY_LIST_RESPONSE>(`${environment.SERVER_API_URL}/proyectos`);
+    }
+
+    find(uid: string): Observable<Project> {
+        const params = new HttpParams().append('uid', uid);
+
+        return this.http.get<ENTITY_LIST_RESPONSE>(`${environment.SERVER_API_URL}/proyectos`, {params})
+            .pipe(
+                map(value => value.proyectos[0])
+            );
+    }
+
+    create(project: Project): Observable<Project> {
+        return this.http.post<Project>(`${environment.SERVER_API_URL}/proyectos`, project);
     }
 
     edit(project: Project): Observable<Project> {
@@ -35,3 +48,4 @@ export class ProjectService {
     }
 }
 
+  

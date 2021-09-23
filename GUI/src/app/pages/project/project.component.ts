@@ -15,22 +15,27 @@ export class ProjectComponent implements OnInit {
     displayedColumns: string[] = ['estado', 'usuarios', 'nombre_proyecto', 'descripcion', 'uid', 'acciones'];
     dataSource: Project[] = [];
 
-    constructor(private projectService: ProjectService) {
+    constructor(private router: Router, private projectService: ProjectService) {
     }
 
     ngOnInit(): void {
-        this.findUsers();
+        this.findProjects();
     }
 
-    findUsers() {
-        this.projectService.getUsers()
+    findProjects() {
+        this.projectService.list()
             .subscribe(response => {
                 this.dataSource = response.proyectos;
             });
     }
 
-    addData(): void {
-        console.log("Agrega Datos")
+    navigateToEditProject(uid: string) {
+        this.router.navigate(['/project/', uid, 'edit']);
+    }
+
+    navigateToCreateProject() {
+        this.router.navigate(['/project/create']);
     }
 
 }
+ 

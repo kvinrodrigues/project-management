@@ -18,9 +18,12 @@ import {MatButtonModule} from '@angular/material/button';
 import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { UserEditComponent } from './user-edit.component';
+import {MatInputModule} from "@angular/material/input";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
-  declarations: [UserComponent],
+  declarations: [UserComponent, UserEditComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
@@ -34,6 +37,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ReactiveFormsModule,
     MatTableModule,
     MatButtonModule,
+    MatInputModule,
+    FlexLayoutModule,
   ],
 })
-export class UserModule {}
+export class UserModule {} 
