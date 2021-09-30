@@ -18,7 +18,7 @@ const routes: Routes = [
             import('./pages/home/home.module').then((value) => value.HomeModule),
     },
     {
-        path: 'permissions',
+        path: 'permission',
         loadChildren: () =>
             import('./pages/permissions/permissions.module').then(
                 (module) => module.PermissionsModule
@@ -33,7 +33,7 @@ const routes: Routes = [
             ),
     },
     {
-        path: 'rol',
+        path: 'role',
         loadChildren: () =>
             import('./pages/rol/rol.module').then(
                 (module) => module.RolModule

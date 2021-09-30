@@ -1,4 +1,4 @@
-<nav dropdown class="sidenav" *ngIf="isAuthenticated() | async">
+<nav class="sidenav" *ngIf="isAuthenticated() | async">
   <button mat-menu-item routerLink="/home" routerLinkActive="active" (click)="toggle()" class="nav-button">
     <mat-icon class="mat-icon">home</mat-icon>
     <span class="button-title"><strong>Home</strong></span>
@@ -13,10 +13,36 @@
           <span style="color: white;"><strong>Administracion</strong></span>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <button mat-menu-item routerLink="/department" *ngIf="checkRoles()" routerLinkActive="active"
+      <button mat-menu-item routerLink="/user" routerLinkActive="active"
+              (click)="toggle()" class="nav-button">
+        <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
+        <span><strong>Usuarios</strong></span>
+      </button>
+      <button mat-menu-item routerLink="/role" routerLinkActive="active"
         (click)="toggle()" class="nav-button">
         <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
-        <span><strong>Roles y Permisos</strong></span>
+        <span><strong>Roles</strong></span>
+      </button>
+      <button mat-menu-item routerLink="/permission" routerLinkActive="active"
+              (click)="toggle()" class="nav-button">
+        <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
+        <span><strong>Permisos</strong></span>
+      </button>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel hideToggle [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon style="color: white;">Book</mat-icon>
+        </mat-panel-title>
+        <mat-panel-description>
+          <span style="color: white;"><strong>Gestion de Proyectos</strong></span>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <button mat-menu-item routerLink="/project" routerLinkActive="active"
+              (click)="toggle()" class="nav-button">
+        <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
+        <span><strong>Proyectos</strong></span>
       </button>
     </mat-expansion-panel>
   </mat-accordion>

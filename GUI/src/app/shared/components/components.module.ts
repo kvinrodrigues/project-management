@@ -13,6 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import {FlexModule} from "@angular/flex-layout";
 import {MatButtonModule} from "@angular/material/button";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [NavbarComponent, SidenavComponent],
@@ -24,6 +25,7 @@ import {MatButtonModule} from "@angular/material/button";
         MatExpansionModule,
         FlexModule,
         MatButtonModule,
+        RouterModule,
     ],
   exports: [NavbarComponent, SidenavComponent],
 })
