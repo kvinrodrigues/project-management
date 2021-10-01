@@ -9,6 +9,7 @@ export interface User {
   export class User implements User {
     constructor(nombre?: string,
                 correo?: string,
+                rol?: string,
                 uid?: string
     ) {
         if (typeof uid === "string") {
@@ -19,6 +20,9 @@ export interface User {
         }
         if (correo != null) {
             this.correo = correo;
+        }
+        if (rol != null) {
+            this.rol = rol;
         }
     }
 }

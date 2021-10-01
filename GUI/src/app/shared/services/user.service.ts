@@ -23,13 +23,13 @@ export class UserService {
     }
 
     list(): Observable<ENTITY_LIST_RESPONSE> {
-        return this.http.get<ENTITY_LIST_RESPONSE>(`${environment.SERVER_API_URL}/proyectos`);
+        return this.http.get<ENTITY_LIST_RESPONSE>(`${environment.SERVER_API_URL}/usuarios`);
     }
 
     find(uid: string): Observable<User> {
         const params = new HttpParams().append('uid', uid);
 
-        return this.http.get<ENTITY_LIST_RESPONSE>(`${environment.SERVER_API_URL}/proyectos`, {params})
+        return this.http.get<ENTITY_LIST_RESPONSE>(`${environment.SERVER_API_URL}/usuarios`, {params})
             .pipe(
                 map(value => value.usuarios[0])
             );
@@ -47,4 +47,3 @@ export class UserService {
         return this.http.delete<User>(`${environment.SERVER_API_URL}/usuarios/${user.uid}`);
     }
 }
- 
