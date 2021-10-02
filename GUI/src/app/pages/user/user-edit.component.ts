@@ -47,7 +47,7 @@ export class UserEditComponent implements OnInit {
     callOnSubmit() {
         let user = new User(this.dataValidationForm?.value.nombre,
             this.dataValidationForm?.value.correo,
-            this.dataValidationForm?.value.rol,
+            this.dataValidationForm?.value.rol?.rol,
             this.dataValidationForm?.value.uid)
 
         if (this.isNew) {
@@ -57,6 +57,8 @@ export class UserEditComponent implements OnInit {
             this.userService.edit(user)
                 .subscribe(value => console.log(`Se modifico el usuario: ${value}`));
         }
+
+        setTimeout(() => {window.history.back();}, 500)
     }
 
 }

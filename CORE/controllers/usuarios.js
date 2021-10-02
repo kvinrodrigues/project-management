@@ -9,10 +9,10 @@ const usuariosGet = async (req = request, res = response) => {
 
     const {limite = Number.MAX_SAFE_INTEGER, desde = 0} = req.query;
 
-    let query;
+    const query = {estado: true};
     const uid = req.query.uid;
     if (uid) {
-        query = {_id: req.query.uid};
+        query.uid = uid;
     }
 
     const [total, usuarios] = await Promise.all([
@@ -29,9 +29,10 @@ const usuariosGet = async (req = request, res = response) => {
 }
 
 const usuariosPost = async (req, res = response) => {
-    const {nombre, correo, password, rol} = req.body;
+    const {nombre, correo, rol} = req.body;
 
     const rolEncontrado = await Role.findOne({rol: {$in: rol}});
+    const password = 'admin123';
     const usuario = new Usuario({nombre, correo, password, rol:rolEncontrado._id});
 
     // Encriptar la contraseña

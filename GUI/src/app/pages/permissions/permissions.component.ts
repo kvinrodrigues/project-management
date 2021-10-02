@@ -30,10 +30,19 @@ export class PermissionsComponent implements OnInit {
     }
 
     navigateToEditPermission(uid: string) {
-        this.router.navigate(['/permissions/', uid, 'edit']);
+        this.router.navigate(['/permission/', uid, 'edit']);
     }
 
     navigateToCreatePermission() {
-        this.router.navigate(['/permissions/create']);
+        this.router.navigate(['/permission/create']);
+    }
+
+    delete(permission: Permission) {
+        this.permissionService.delete(permission)
+            .subscribe((response) => {
+                if (response) {
+                    this.findPermissions();
+                }
+            })
     }
 }

@@ -33,5 +33,12 @@ export class UserComponent implements OnInit {
     navigateToCreateUser() {
         this.router.navigate(['/user/create']);
     }
+
+    delete(element: User) {
+        this.userService.delete(element).subscribe(value => {
+           if (value) {
+               this.findUsers();
+           }
+        });
+    }
 }
- 

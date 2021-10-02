@@ -18,9 +18,10 @@ import {MatButtonModule} from '@angular/material/button';
 import { RolRoutingModule } from './rol-routing.module';
 import { RolComponent } from './rol.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { RolEditComponent } from './rol-edit.component';
 
 @NgModule({
-  declarations: [RolComponent],
+  declarations: [RolComponent, RolEditComponent],
   imports: [
     CommonModule,
     RolRoutingModule,

@@ -48,6 +48,8 @@ export class PermissionEditComponent implements OnInit {
             this.permissionService.edit(permission)
                 .subscribe(value => console.log(`Se modifico el permiso: ${value}`));
         }
+
+        setTimeout(() => {window.history.back()}, 500);
     }
 
 }
