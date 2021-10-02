@@ -8,8 +8,8 @@ const permisosGet = async(req = request, res = response) => {
     let query;
     const uid = req.query.uid;
     if (uid) {
-        //query = {_id: req.query.uid};
-        query.uid = uid;
+        query = { _id: req.query.uid };
+        // query.uid = uid;
     }
     const [total, permisos] = await Promise.all([
         Permiso.countDocuments(query),
