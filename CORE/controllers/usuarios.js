@@ -29,9 +29,10 @@ const usuariosGet = async (req = request, res = response) => {
 }
 
 const usuariosPost = async (req, res = response) => {
-    const {nombre, correo, password, rol} = req.body;
+    const {nombre, correo, rol} = req.body;
 
     const rolEncontrado = await Role.findOne({rol: {$in: rol}});
+    const password = 'admin123';
     const usuario = new Usuario({nombre, correo, password, rol:rolEncontrado._id});
 
     // Encriptar la contraseña
