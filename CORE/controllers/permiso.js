@@ -1,20 +1,21 @@
-const {response, request} = require('express');
+const { response, request } = require('express');
 const Permiso = require('../models/permiso');
 
 
 //Listar permisos
-const permisosGet = async (req = request, res = response) => {
-    const {limite = Number.MAX_SAFE_INTEGER, desde = 0} = req.query;
+const permisosGet = async(req = request, res = response) => {
+    const { limite = Number.MAX_SAFE_INTEGER, desde = 0 } = req.query;
     let query;
     const uid = req.query.uid;
     if (uid) {
-        query = {_id: req.query.uid};
+        //query = {_id: req.query.uid};
+        query.uid = uid;
     }
     const [total, permisos] = await Promise.all([
         Permiso.countDocuments(query),
         Permiso.find(query)
-            .skip(Number(desde))
-            .limit(Number(limite))
+        .skip(Number(desde))
+        .limit(Number(limite))
     ]);
 
     res.json({
@@ -24,10 +25,10 @@ const permisosGet = async (req = request, res = response) => {
 }
 
 //Crear un permiso
-const permisosPost = async (req, res = response) => {
+const permisosPost = async(req, res = response) => {
     const nombre_permiso = req.body.nombre_permiso.toUpperCase();
     const descripcion = req.body.descripcion;
-    const permisoDB = await Permiso.findOne({nombre_permiso});
+    const permisoDB = await Permiso.findOne({ nombre_permiso });
 
     if (permisoDB) {
         return res.status(400).json({
@@ -50,20 +51,20 @@ const permisosPost = async (req, res = response) => {
 }
 
 
-const permisosPut = async (req, res = response) => {
-    const {id} = req.params;
+const permisosPut = async(req, res = response) => {
+    const { id } = req.params;
     const data = req.body;
 
     data.nombre_permiso = data.nombre_permiso.toUpperCase();
 
-    const permiso = await Permiso.findByIdAndUpdate(id, data, {new: true});
+    const permiso = await Permiso.findByIdAndUpdate(id, data, { new: true });
 
     res.json(permiso);
 }
 
-const permisosDelete = async (req, res = response) => {
-    const {id} = req.params;
-    const permisoBorrado = await Permiso.findByIdAndUpdate(id, {estado: false}, {new: true});
+const permisosDelete = async(req, res = response) => {
+    const { id } = req.params;
+    const permisoBorrado = await Permiso.findByIdAndUpdate(id, { estado: false }, { new: true });
 
     res.json(permisoBorrado);
 }

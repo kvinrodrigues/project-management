@@ -9,6 +9,10 @@ const PermisoSchema = Schema({
     descripcion: {
         type: String,
         required: [true, 'La descripcion del permiso es obligatorio']
+    },
+    estado: {
+        type: Boolean,
+        default: true
     }
 });
 
