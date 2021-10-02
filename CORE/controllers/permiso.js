@@ -5,12 +5,13 @@ const Permiso = require('../models/permiso');
 //Listar permisos
 const permisosGet = async(req = request, res = response) => {
     const { limite = Number.MAX_SAFE_INTEGER, desde = 0 } = req.query;
-    let query;
+    const query = { estado: true };
     const uid = req.query.uid;
+
     if (uid) {
-        query = { _id: req.query.uid };
-        // query.uid = uid;
+        query.uid = uid;
     }
+
     const [total, permisos] = await Promise.all([
         Permiso.countDocuments(query),
         Permiso.find(query)
