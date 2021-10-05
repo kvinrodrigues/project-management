@@ -16,7 +16,7 @@ import {map} from "rxjs/operators";
 export class UserEditComponent implements OnInit {
     dataValidationForm: FormGroup = this.formBuilder.group({});
     isNew: boolean = true;
-    rolObservable: Observable<Rol[]> = this.roleService.getRoles()
+    rolObservable: Observable<Rol[]> = this.roleService.list()
         .pipe(map((value => value.roles)));
 
     constructor(private userService: UserService,

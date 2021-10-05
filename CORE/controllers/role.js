@@ -1,12 +1,16 @@
 const {response, request} = require('express');
 const Rol = require('../models/role');
 const Permiso = require('../models/permiso');
-const Role = require("../models/role");
 
 //Listar roles
 const rolesGet = async (req = request, res = response) => {
-    const {limite = 5, desde = 0} = req.query;
+    const {limite = Number.MAX_SAFE_INTEGER, desde = 0} = req.query;
     const query = {estado: true};
+
+    const uid = req.query.uid;
+    if (uid) {
+        query._id = uid;
+    }
 
     const [total, roles] = await Promise.all([
         Rol.countDocuments(query),

@@ -12,7 +12,7 @@ const usuariosGet = async (req = request, res = response) => {
     const query = {estado: true};
     const uid = req.query.uid;
     if (uid) {
-        query.uid = uid;
+        query._id = uid;
     }
 
     const [total, usuarios] = await Promise.all([

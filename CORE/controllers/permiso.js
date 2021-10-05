@@ -1,7 +1,6 @@
 const { response, request } = require('express');
 const Permiso = require('../models/permiso');
 
-
 //Listar permisos
 const permisosGet = async(req = request, res = response) => {
     const { limite = Number.MAX_SAFE_INTEGER, desde = 0 } = req.query;
@@ -9,7 +8,7 @@ const permisosGet = async(req = request, res = response) => {
     const uid = req.query.uid;
 
     if (uid) {
-        query.uid = uid;
+        query._id = uid;
     }
 
     const [total, permisos] = await Promise.all([
