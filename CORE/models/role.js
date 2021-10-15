@@ -22,4 +22,10 @@ const RoleSchema = Schema({
     },
 });
 
+RoleSchema.methods.toJSON = function() {
+    const { __v, _id, ...rol } = this.toObject();
+    rol.uid = _id;
+    return rol;
+}
+
 module.exports = model('Role', RoleSchema);

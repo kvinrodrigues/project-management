@@ -8,8 +8,14 @@ const Usuario = require('../models/usuario');
 
 
 const proyectosGet = async(req = request, res = response) => {
-    const { limite = 5, desde = 0 } = req.query;
+    const { limite = Number.MAX_SAFE_INTEGER, desde = 0 } = req.query;
     const query = { estado: true };
+
+    const uid = req.query.uid;
+
+    if (uid) {
+        query._id = uid;
+    }
 
     const [total, proyectos] = await Promise.all([
         Proyecto.countDocuments(query),
@@ -42,7 +48,7 @@ const proyectosPost = async(req, res = response) => {
     });
 }
 
-//Modificar proyecto 
+//Modificar proyecto
 const proyectosPut = async(req, res = response) => {
     const { id } = req.params;
     const { nombre_proyecto, descripcion, usuarios } = req.body

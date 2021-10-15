@@ -1,27 +1,7 @@
-import {Rol} from './../../shared/models/rol';
 import {Component, OnInit} from '@angular/core';
-
-const ELEMENT_DATA: Rol[] = [
-    {
-        "estado": true,
-        "_id": "611ef3f943629a1ef3a33cd0",
-        "rol": "PRODUCT_OWNER",
-        "descripcion": "Rol del dueño de proyecto",
-    },
-    {
-        "estado": true,
-        "_id": "611efd0343629a1ef3a33cd1",
-        "rol": "DEVELOPMENT",
-        "descripcion": "Rol del equipo de desarrollo",
-    },
-    {
-        "estado": true,
-        "_id": "611efdb643629a1ef3a33cd2",
-        "rol": "SCRUM_MASTER",
-        "descripcion": "Rol del scrum master",
-    }
-
-];
+import {RolService} from "../../shared/services/rol.service";
+import {Router} from "@angular/router";
+import {Rol} from "../../shared/models/rol";
 
 @Component({
     selector: 'app-rol',
@@ -29,13 +9,37 @@ const ELEMENT_DATA: Rol[] = [
     styleUrls: ['./rol.component.scss']
 })
 export class RolComponent implements OnInit {
-    displayedColumns: string[] = ['_id', 'rol', 'descripcion', 'estado', 'acciones'];
-    dataSource = ELEMENT_DATA;
+    displayedColumns: string[] = ['uid', 'rol', 'descripcion', 'estado', 'acciones'];
+    dataSource: Rol[] = [];
 
-    ngOnInit(): void {
+    constructor(private router: Router, private rolService: RolService) {
     }
 
-    addData(): void {
-        console.log("Agrega Datos")
+    ngOnInit(): void {
+        this.findRoles();
+    }
+
+    findRoles() {
+        this.rolService.list()
+            .subscribe(response => {
+                this.dataSource = response.roles;
+            });
+    }
+
+    navigateToEditPermission(uid: string) {
+        this.router.navigate(['/role/', uid, 'edit']);
+    }
+
+    navigateToCreateRole() {
+        this.router.navigate(['/role/create']);
+    }
+
+    delete(role: Rol) {
+        this.rolService.delete(role)
+            .subscribe((response) => {
+                if (response) {
+                    this.findRoles();
+                }
+            })
     }
 }
