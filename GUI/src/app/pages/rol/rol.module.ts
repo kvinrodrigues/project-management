@@ -20,24 +20,26 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {RolEditComponent} from './rol-edit.component';
 import {MatInputModule} from "@angular/material/input";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [RolComponent, RolEditComponent],
-  imports: [
-    CommonModule,
-    RolRoutingModule,
-    MatCardModule,
-    MatIconModule,
-    MatProgressBarModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatFormFieldModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    MatButtonModule,
-    MatInputModule,
-    FlexLayoutModule,
-  ],
+    imports: [
+        CommonModule,
+        RolRoutingModule,
+        MatCardModule,
+        MatIconModule,
+        MatProgressBarModule,
+        MatExpansionModule,
+        MatGridListModule,
+        MatFormFieldModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        MatButtonModule,
+        MatInputModule,
+        FlexLayoutModule,
+        MatSelectModule,
+    ],
 })
 export class RolModule {}

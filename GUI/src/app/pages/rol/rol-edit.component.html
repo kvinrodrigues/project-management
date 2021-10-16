@@ -21,6 +21,15 @@
             </mat-form-field>
         </div>
 
+        <div class="form-container__input" fxLayoutAlign="center stretch">
+            <mat-form-field appearance="fill">
+                <mat-label>Permisos</mat-label>
+                <mat-select formControlName="permissions" multiple>
+                    <mat-option *ngFor="let value of availablePermissions" [value]="value">{{value.nombre_permiso}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
         <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
             <button mat-raised-button color="primary" [disabled]="dataValidationForm?.invalid">
                 <mat-icon aria-hidden="false" aria-label="Continuar">navigate_next</mat-icon>
