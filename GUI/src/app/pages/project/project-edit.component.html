@@ -11,7 +11,7 @@
             </mat-form-field>
 
         </div>
- 
+
         <div class="form-container__input" fxLayoutAlign="center stretch">
             <mat-form-field appearance="outline">
                 <mat-label>Descripcion</mat-label>
@@ -19,6 +19,15 @@
                     <input id="descripcion" fxFlexFill formControlName="descripcion" matInput
                            placeholder="Descripcion del Proyecto">
                 </label>
+            </mat-form-field>
+        </div>
+
+        <div class="form-container__input" fxLayoutAlign="center stretch">
+            <mat-form-field appearance="fill">
+                <mat-label>Miembros</mat-label>
+                <mat-select formControlName="users" multiple>
+                    <mat-option *ngFor="let value of availableUsers" [value]="value">{{value.nombre}}</mat-option>
+                </mat-select>
             </mat-form-field>
         </div>
 

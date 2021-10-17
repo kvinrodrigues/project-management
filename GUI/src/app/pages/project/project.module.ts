@@ -21,24 +21,26 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProjectEditComponent } from './project-edit.component';
 import {MatInputModule} from "@angular/material/input";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [ProjectComponent, ProjectEditComponent],
-  imports: [
-    CommonModule,
-    ProjectRoutingModule,
-    MatCardModule,
-    MatIconModule,
-    MatProgressBarModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatFormFieldModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    MatButtonModule,
-    MatInputModule,
-    FlexLayoutModule,
-  ],
+    imports: [
+        CommonModule,
+        ProjectRoutingModule,
+        MatCardModule,
+        MatIconModule,
+        MatProgressBarModule,
+        MatExpansionModule,
+        MatGridListModule,
+        MatFormFieldModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        MatButtonModule,
+        MatInputModule,
+        FlexLayoutModule,
+        MatSelectModule,
+    ],
 })
-export class ProjectModule {} 
+export class ProjectModule {}
