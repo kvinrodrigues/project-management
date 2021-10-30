@@ -15,16 +15,31 @@ const usuariosGet = async (req = request, res = response) => {
         query._id = uid;
     }
 
-    const [total, usuarios] = await Promise.all([
-        Usuario.countDocuments(query),
-        Usuario.find(query)
-            .skip(Number(desde))
-            .limit(Number(limite))
-    ]);
+    const usuarios = await getUsers(query, desde, limite);
+    const total = await Usuario.countDocuments(query);
 
     res.json({
         total,
         usuarios
+    });
+}
+
+async function getUsers(query, desde, limite) {
+    return new Promise((resolve, reject) => {
+        Usuario.find(query)
+            .skip(Number(desde))
+            .limit(Number(limite))
+            .populate('rol')
+            .exec((err, populatedData) => {
+                if (err) {
+                    reject(error);
+                    return false;
+                }
+
+                resolve(populatedData);
+            });
+
+
     });
 }
 
@@ -33,7 +48,7 @@ const usuariosPost = async (req, res = response) => {
 
     const rolEncontrado = await Role.findOne({rol: {$in: rol}});
     const password = 'admin123';
-    const usuario = new Usuario({nombre, correo, password, rol:rolEncontrado._id});
+    const usuario = new Usuario({nombre, correo, password, rol: rolEncontrado._id});
 
     // Encriptar la contraseña
     const salt = bcryptjs.genSaltSync();

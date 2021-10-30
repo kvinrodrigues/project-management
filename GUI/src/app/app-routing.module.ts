@@ -46,6 +46,13 @@ const routes: Routes = [
                 (module) => module.ProjectModule
             ),
     },
+    {
+        path: 'board',
+        loadChildren: () =>
+            import('./pages/board/board.module').then(
+                (module) => module.BoardModule
+            ),
+    },
 ];
 
 @NgModule({
