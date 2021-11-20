@@ -1,15 +1,17 @@
+import {Rol} from "./rol";
+
 export interface User {
       estado: boolean;
       nombre: string;
       correo: string;
-      rol: string;
+      rol: Rol;
       uid: string;
   }
 
   export class User implements User {
     constructor(nombre?: string,
                 correo?: string,
-                rol?: string,
+                rol?: Rol,
                 uid?: string
     ) {
         if (typeof uid === "string") {
