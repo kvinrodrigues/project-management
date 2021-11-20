@@ -25,7 +25,7 @@
         <div class="form-container__input" fxLayoutAlign="center stretch">
             <mat-form-field appearance="outline">
                 <mat-label>Rol</mat-label>
-                <label for="correo">
+                <label for="rol">
                     <mat-select formControlName="rol" placeholder="Seleccione un rol">
                         <mat-option *ngFor="let option of rolObservable | async" [value]="option">
                             {{option.descripcion}}

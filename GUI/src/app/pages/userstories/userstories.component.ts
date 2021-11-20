@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
     styleUrls: ['./userstories.component.scss']
 })
 export class UserstoriesComponent implements OnInit {
-    displayedColumns: string[] = ['estado', 'nombre',  'acciones'];
+    displayedColumns: string[] = ['estado','proyecto','uid', 'titulo',  'solicitante' ,'descripcion','acciones'];
     dataSource: Userstories[] = [];
 
     constructor(private router: Router, private userstoriesService: UserstoriesService) {

@@ -6,6 +6,7 @@ import {Rol} from "../../shared/models/rol";
 import {PermissionsService} from "../../shared/services/permissions.service";
 import {Permission} from "../../shared/models/permission";
 
+
 @Component({
     selector: 'app-rol-edit',
     templateUrl: './rol-edit.component.html',
@@ -17,10 +18,11 @@ export class RolEditComponent implements OnInit {
     isNew: boolean = true;
 
     constructor(private rolService: RolService,
-                private permissionService: PermissionsService,
-                private formBuilder: FormBuilder,
-                private activatedRoute: ActivatedRoute) {
+        private permissionService: PermissionsService,
+        private formBuilder: FormBuilder,
+        private activatedRoute: ActivatedRoute) {
     }
+
 
     ngOnInit(): void {
         this.buildForm();
@@ -52,6 +54,7 @@ export class RolEditComponent implements OnInit {
         let role = new Rol(this.dataValidationForm?.value.rol,
             this.dataValidationForm?.value.descripcion,
             this.dataValidationForm?.value.uid)
+
 
         if (this.isNew) {
             this.rolService.create(role)
