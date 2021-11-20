@@ -1,0 +1,22 @@
+<div class="main-container" fxLayout="column" fxLayoutAlign="center center">
+    <h1>Crear o editar Historias de Usuario</h1>
+    <form [formGroup]="dataValidationForm" (ngSubmit)="callOnSubmit()">
+        <div class="form-container__input" fxLayoutAlign="center stretch">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <label for="proyecto">
+                    <input id="proyecto" fxFlexFill formControlName="proyecto" matInput
+                           placeholder="Nombre del proyecto">
+                </label>
+            </mat-form-field>
+
+        </div>
+
+        <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
+            <button mat-raised-button color="primary" [disabled]="dataValidationForm?.invalid">
+                <mat-icon aria-hidden="false" aria-label="Continuar">navigate_next</mat-icon>
+                <span>Confirmar</span>
+            </button>
+        </mat-card-actions>
+    </form>
+</div>

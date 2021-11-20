@@ -46,6 +46,20 @@ const routes: Routes = [
                 (module) => module.ProjectModule
             ),
     },
+    {
+        path: 'stories',
+        loadChildren: () =>
+            import('./pages/userstories/userstories.module').then(
+                (module) => module.UserstoriesModule
+            ),
+    },
+    {
+        path: 'backlog',
+        loadChildren: () =>
+            import('./pages/backlog/backlog.module').then(
+                (module) => module.BacklogModule
+            ),
+    },
 ];
 
 @NgModule({
