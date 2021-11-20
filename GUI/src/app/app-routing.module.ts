@@ -47,10 +47,17 @@ const routes: Routes = [
             ),
     },
     {
-        path: 'board',
+        path: 'stories',
         loadChildren: () =>
-            import('./pages/board/board.module').then(
-                (module) => module.BoardModule
+            import('./pages/userstories/userstories.module').then(
+                (module) => module.UserstoriesModule
+            ),
+    },
+    {
+        path: 'backlog',
+        loadChildren: () =>
+            import('./pages/backlog/backlog.module').then(
+                (module) => module.BacklogModule
             ),
     },
 ];
