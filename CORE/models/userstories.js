@@ -1,11 +1,20 @@
 const { Schema, model } = require('mongoose');
 
 const storySchema = Schema({
-    proyecto: [{
+    proyecto: {
         type: Schema.Types.ObjectId,
         ref: 'Proyecto',
         required: true
-    }],
+    },
+    titulo: {
+        type: String
+    },
+    solicitante: {
+        type: String
+    },
+    descripcion: {
+        type: String
+    },
     estado: {
         type: Boolean,
         default: true
