@@ -1,11 +1,7 @@
 const { response, request } = require('express');
-const { Schema } = require('mongoose');
 
 const Proyecto = require('../models/proyecto');
 const Usuario = require('../models/usuario');
-
-
-
 
 const proyectosGet = async(req = request, res = response) => {
     const { limite = Number.MAX_SAFE_INTEGER, desde = 0 } = req.query;
@@ -17,17 +13,32 @@ const proyectosGet = async(req = request, res = response) => {
         query._id = uid;
     }
 
-    const [total, proyectos] = await Promise.all([
-        Proyecto.countDocuments(query),
-        Proyecto.find(query)
-        .skip(Number(desde))
-        .limit(Number(limite))
-    ]);
+    const proyectos = await getProjects(query, desde, limite);
+    const total = await Proyecto.countDocuments(query);
 
     res.json({
         total,
         proyectos
     })
+}
+
+async function getProjects(query, desde, limite) {
+    return new Promise((resolve, reject) => {
+        Proyecto.find(query)
+            .skip(Number(desde))
+            .limit(Number(limite))
+            .populate('usuarios')
+            .exec((err, populatedData) => {
+                if (err) {
+                    reject(error);
+                    return false;
+                }
+
+                resolve(populatedData);
+            });
+
+
+    });
 }
 
 const proyectosGetByID = async(req, res = response) => {
@@ -39,7 +50,7 @@ const proyectosGetByID = async(req, res = response) => {
 //Crear
 const proyectosPost = async(req, res = response) => {
     const { nombre_proyecto, descripcion, usuarios } = req.body;
-    const usuariosEncontrados = await Usuario.find({ correo: { $in: usuarios } });
+    const usuariosEncontrados = await Usuario.find({ _id: { $in: usuarios } });
 
     const data = {
         nombre_proyecto,
@@ -58,7 +69,7 @@ const proyectosPost = async(req, res = response) => {
 const proyectosPut = async(req, res = response) => {
     const { id } = req.params;
     const { nombre_proyecto, descripcion, usuarios } = req.body
-    const usuariosEncontrados = await Usuario.find({ correo: { $in: usuarios } });
+    const usuariosEncontrados = await Usuario.find({ _id: { $in: usuarios } });
 
     const data = {
         nombre_proyecto,
