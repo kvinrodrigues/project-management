@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {Observable} from "rxjs";
+import {AuthenticationService} from "./authentication/authentication.service";
 
 @Component({
     selector: 'app-root',
@@ -8,6 +10,9 @@ import {Component} from '@angular/core';
 export class AppComponent {
     mode: String = "";
     screenWidth: number | undefined = undefined;
+
+    constructor(private authenticationService: AuthenticationService) {
+    }
 
     updateSidenavMode() {
         let condition = this.isResponsive();
@@ -20,6 +25,10 @@ export class AppComponent {
 
     isResponsive(): boolean {
         return <boolean>(this.screenWidth && this.screenWidth < 960);
+    }
+
+    isAuthenticated(): Observable<boolean> {
+        return this.authenticationService.isAuthenticated();
     }
 
 }

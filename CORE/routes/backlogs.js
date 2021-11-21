@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { validarCampos } = require('../middlewares');
+const { validarCampos, tieneRole, validarJWT} = require('../middlewares');
 const {
     backlogGet,
     backlogPost,
@@ -12,16 +12,23 @@ const {
 
 const router = Router();
 
-router.get('/', backlogGet);
+router.get('/', [
+    validarJWT,
+    tieneRole('CONSULTAR_BACKLOG'),
+], backlogGet);
 
 router.post('/', backlogPost);
 
 router.put('/:id', [
+    validarJWT,
+    tieneRole('MODIFICAR_BACKLOG'),
     check('id', 'No es un ID válido').isMongoId(),
     validarCampos
 ], backlogPut)
 
 router.delete('/:id', [
+    validarJWT,
+    tieneRole('MODIFICAR_BACKLOG'),
     check('id', 'No es un ID válido').isMongoId(),
     validarCampos
 ], backlogDelete);

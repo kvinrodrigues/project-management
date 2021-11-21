@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav [fixedInViewport]="true" [opened]="true" #sidenav mode="side">
+    <mat-sidenav [fixedInViewport]="true" [opened]="isAuthenticated() | async" #sidenav mode="side">
         <app-sidenav></app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>
