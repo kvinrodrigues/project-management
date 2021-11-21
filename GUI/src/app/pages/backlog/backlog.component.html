@@ -20,14 +20,23 @@
         
 
               <!-- Nombre Usuario Column -->
+              <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef> Estado</th>
+                <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+            </ng-container>
+
               <ng-container matColumnDef="uid">
                 <th mat-header-cell *matHeaderCellDef> Uid</th>
                 <td mat-cell *matCellDef="let element"> {{element.uid}} </td>
             </ng-container>
                 <!-- Nombre Usuario Column -->
-            <ng-container matColumnDef="backlog">
+            <ng-container matColumnDef="nombre">
                 <th mat-header-cell *matHeaderCellDef> Nombre</th>
-                <td mat-cell *matCellDef="let element"> {{element.baclog}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+            </ng-container>
+            <ng-container matColumnDef="userstories">
+                <th mat-header-cell *matHeaderCellDef> Historia Usuario </th>
+                <td mat-cell *matCellDef="let element"> {{element.userstories}} </td>
             </ng-container>
 
 

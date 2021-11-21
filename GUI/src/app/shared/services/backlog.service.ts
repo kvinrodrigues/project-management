@@ -23,27 +23,27 @@ export class BacklogService {
     }
 
     list(): Observable<ENTITY_LIST_RESPONSE> {
-        return this.http.get<ENTITY_LIST_RESPONSE>(`${environment.SERVER_API_URL}/backlog`);
+        return this.http.get<ENTITY_LIST_RESPONSE>(`${environment.SERVER_API_URL}/backlogs`);
     }
 
     find(uid: string): Observable<Backlog> {
         const params = new HttpParams().append('uid', uid);
 
-        return this.http.get<ENTITY_LIST_RESPONSE>(`${environment.SERVER_API_URL}/backlog`, {params})
+        return this.http.get<ENTITY_LIST_RESPONSE>(`${environment.SERVER_API_URL}/backlogs`, {params})
             .pipe(
                 map(value => value.backlog[0])
             );
     }
 
     create(backlog: Backlog): Observable<Backlog> {
-        return this.http.post<Backlog>(`${environment.SERVER_API_URL}/backlog`, backlog);
+        return this.http.post<Backlog>(`${environment.SERVER_API_URL}/backlogs`, backlog);
     }
 
     edit(backlog: Backlog): Observable<Backlog> {
-        return this.http.put<Backlog>(`${environment.SERVER_API_URL}/backlog/${backlog.uid}`, backlog);
+        return this.http.put<Backlog>(`${environment.SERVER_API_URL}/backlogs/${backlog.uid}`, backlog);
     }
 
     delete(backlog: Backlog): Observable<Backlog> {
-        return this.http.delete<Backlog>(`${environment.SERVER_API_URL}/backlog/${backlog.uid}`);
+        return this.http.delete<Backlog>(`${environment.SERVER_API_URL}/backlogs/${backlog.uid}`);
     }
 }

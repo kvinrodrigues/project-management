@@ -1,21 +1,32 @@
+import { Userstories } from "./userstories";
+
 export interface Backlog {
-    estado: boolean;
-    backlog: string;
+    userstories: Userstories;
+    nombre: string;
     uid: string;
+    estado: Boolean;
     
 }
 
 export class Backlog implements Backlog {
-  constructor(proyecto?: string,
-              uid?: string
+  constructor(estado?: Boolean,
+              nombre?: string,
+              uid?: string,
+              userstories?: Userstories
              
   ) {
+    if   (estado != null) {
+        this.estado = estado;
+    }
       if (typeof uid === "string") {
       this.uid = uid;
      }
-      if (proyecto != null) {
-          this.backlog = proyecto;
+      if (nombre != null) {
+          this.nombre = nombre;
       }
+      if (userstories != null) {
+        this.userstories = userstories;
+    }
     
       
   }
