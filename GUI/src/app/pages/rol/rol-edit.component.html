@@ -24,7 +24,7 @@
         <div class="form-container__input" fxLayoutAlign="center stretch">
             <mat-form-field appearance="fill">
                 <mat-label>Permisos</mat-label>
-                <mat-select formControlName="permissions" multiple>
+                <mat-select formControlName="permisos" multiple [compareWith]="comparePermissionsObjects">
                     <mat-option *ngFor="let value of availablePermissions" [value]="value">{{value.nombre_permiso}}</mat-option>
                 </mat-select>
             </mat-form-field>

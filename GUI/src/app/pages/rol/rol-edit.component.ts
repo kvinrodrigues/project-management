@@ -38,7 +38,8 @@ export class RolEditComponent implements OnInit {
             this.dataValidationForm = this.formBuilder.group({
                 rol: [data?.rol, [Validators.required]],
                 descripcion: [data?.descripcion, [Validators.required]],
-                permissions: [data?.permissions],
+                permisos: [data?.permisos],
+                estado: [data?.estado],
                 uid: [data?.uid],
             });
         });
@@ -51,8 +52,14 @@ export class RolEditComponent implements OnInit {
     }
 
     callOnSubmit() {
+        const selectedPermissions: Permission[] = this.dataValidationForm?.value.permisos;
+        let selectedPermissionsIdentifiers = selectedPermissions.map(value => value.uid);
+
+
         let role = new Rol(this.dataValidationForm?.value.rol,
             this.dataValidationForm?.value.descripcion,
+            selectedPermissionsIdentifiers,
+            this.dataValidationForm?.value.estado,
             this.dataValidationForm?.value.uid)
 
 
@@ -67,5 +74,9 @@ export class RolEditComponent implements OnInit {
         setTimeout(() => {
             window.history.back()
         }, 500);
+    }
+
+    comparePermissionsObjects(object1: Permission, object2: any) {
+        return object1 && object2 && object1.uid == object2;
     }
 }
