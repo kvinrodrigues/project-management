@@ -1,21 +1,24 @@
+import { Project } from "./project";
+
 export interface Userstories {
-    estado: boolean;
-    proyecto: string;
+    estado: boolean;    
     uid: string;
     titulo: string;
     solicitante: string;
     descripcion: string;
+    proyecto: Project;
 
 }
 
 export class Userstories implements Userstories {
-  constructor(proyecto?: string,
+  constructor(estado?: boolean,
               uid?: string,
               titulo?: string,
               solicitante?: string,
-              descripcion?: string
+              descripcion?: string,
+              proyecto?: Project
   ) {
-      if (typeof uid === "string") {
+      if (typeof uid === 'string' ) {
           this.uid = uid;
       }
     
@@ -34,6 +37,10 @@ export class Userstories implements Userstories {
       if (proyecto != null) {
           this.proyecto = proyecto;
       }
+
+      if (estado != null) {
+        this.estado = estado;
+    }
       
   }
 }

@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
     styleUrls: ['./userstories.component.scss']
 })
 export class UserstoriesComponent implements OnInit {
-    displayedColumns: string[] = ['estado','proyecto','uid', 'titulo',  'solicitante' ,'descripcion','acciones'];
+    displayedColumns: string[] = ['estado','uid','titulo','solicitante',  'descripcion' ,'proyecto','acciones'];
     dataSource: Userstories[] = [];
 
     constructor(private router: Router, private userstoriesService: UserstoriesService) {
@@ -22,7 +22,7 @@ export class UserstoriesComponent implements OnInit {
     findUserstories() {
         this.userstoriesService.list()
         .subscribe(response => {
-            this.dataSource = response.stories;
+            this.dataSource = response.userstories;
         });
     }
 
