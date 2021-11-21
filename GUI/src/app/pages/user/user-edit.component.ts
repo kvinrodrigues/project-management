@@ -37,10 +37,12 @@ export class UserEditComponent implements OnInit {
 
             this.dataValidationForm = this.formBuilder.group({
                 nombre: [data.nombre, [Validators.required]],
-                correo: [data.correo, [Validators.required]],
+                correo: [data.correo, [Validators.required, Validators.email]],
                 rol: [data.rol, [Validators.required]],
                 uid: [data.uid],
             });
+
+            console.log(this.dataValidationForm.value.rol)
         });
     }
 
@@ -61,4 +63,7 @@ export class UserEditComponent implements OnInit {
         setTimeout(() => {window.history.back();}, 500)
     }
 
+    compareRolesObjects(object1: Rol, object2: any) {
+        return object1 && object2 && object1.uid == object2._id;
+    }
 }
