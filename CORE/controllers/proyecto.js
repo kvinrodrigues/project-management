@@ -30,6 +30,12 @@ const proyectosGet = async(req = request, res = response) => {
     })
 }
 
+const proyectosGetByID = async(req, res = response) => {
+    const { id } = req.params;
+    const proyecto = await Proyecto.findById(id);
+    res.json(proyecto);
+}
+
 //Crear
 const proyectosPost = async(req, res = response) => {
     const { nombre_proyecto, descripcion, usuarios } = req.body;
@@ -75,6 +81,7 @@ const proyectosDelete = async(req, res = response) => {
 
 module.exports = {
     proyectosGet,
+    proyectosGetByID,
     proyectosPost,
     proyectosPut,
     proyectosDelete

@@ -6,9 +6,8 @@ const BacklogSchema = Schema({
         ref: 'UserStories',
         required: true
     }],
-    estado: {
-        type: Boolean,
-        default: true
+    nombre: {
+        type: String
     }
 });
 

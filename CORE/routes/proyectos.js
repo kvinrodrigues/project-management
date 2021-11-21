@@ -8,12 +8,18 @@ const {
     proyectosGet,
     proyectosPost,
     proyectosPut,
-    proyectosDelete
+    proyectosDelete,
+    proyectosGetByID
 } = require('../controllers/proyecto');
 
 const router = Router();
 
 router.get('/', proyectosGet);
+
+router.get('/:id', [
+    check('id', 'No es un ID válido').isMongoId(),
+    validarCampos
+], proyectosGetByID)
 
 router.post('/', [
     check('nombre_proyecto', 'El nombre es obligatorio').not().isEmpty(),
