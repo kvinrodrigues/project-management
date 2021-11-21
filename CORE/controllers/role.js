@@ -38,13 +38,11 @@ const rolesPost = async (req, res = response) => {
         });
     }
 
-    const permisosEncontrados = await Permiso.find({nombre_permiso: {$in: permisos}});
-
     //Generar la data para guardar
     const data = {
         rol,
         descripcion,
-        permisos: permisosEncontrados.map((permiso) => permiso._id)
+        permisos
     }
     const role = new Rol(data);
 

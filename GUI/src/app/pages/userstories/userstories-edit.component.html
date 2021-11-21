@@ -1,15 +1,52 @@
 <div class="main-container" fxLayout="column" fxLayoutAlign="center center">
     <h1>Crear o editar Historias de Usuario</h1>
     <form [formGroup]="dataValidationForm" (ngSubmit)="callOnSubmit()">
+
         <div class="form-container__input" fxLayoutAlign="center stretch">
             <mat-form-field appearance="outline">
-                <mat-label>Nombre</mat-label>
-                <label for="proyecto">
-                    <input id="proyecto" fxFlexFill formControlName="proyecto" matInput
-                           placeholder="Nombre del proyecto">
+                <mat-label>Titulo</mat-label>
+                <label for="titulo">
+                    <input id="titulo" fxFlexFill formControlName="titulo" matInput
+                           placeholder="titulo">
                 </label>
             </mat-form-field>
 
+        </div>
+
+        <div class="form-container__input" fxLayoutAlign="center stretch">
+            <mat-form-field appearance="outline">
+                <mat-label>Solicitante</mat-label>
+                <label for="solicitante">
+                    <input id="solicitante" fxFlexFill formControlName="solicitante" matInput
+                           placeholder="solicitante">
+                </label>
+            </mat-form-field>
+
+        </div>
+
+        <div class="form-container__input" fxLayoutAlign="center stretch">
+            <mat-form-field appearance="outline">
+                <mat-label>Descripcion</mat-label>
+                <label for="descripcion">
+                    <input id="descripcion" fxFlexFill formControlName="descripcion" matInput
+                           placeholder="descripcion">
+                </label>
+            </mat-form-field>
+
+        </div>
+
+
+        <div class="form-container__input" fxLayoutAlign="center stretch">
+            <mat-form-field appearance="outline">
+                <mat-label>Proyecto</mat-label>
+                <label >
+                    <mat-select formControlName="proyecto" placeholder="Seleccione un proyecto">
+                        <mat-option *ngFor="let option of projectObservable | async" [value]="option">
+                            {{option.descripcion}}
+                        </mat-option>
+                    </mat-select>
+                </label>
+            </mat-form-field>
         </div>
 
         <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">

@@ -63,17 +63,13 @@ const usuariosPost = async (req, res = response) => {
 }
 
 const usuariosPut = async (req, res = response) => {
-
     const {id} = req.params;
-    const {_id, password, correo, ...resto} = req.body;
+    const {nombre, correo, rol} = req.body; // TODO se podria agarrar todo el request y nada mas modificar el rol considerando solo el id
 
-    if (password) {
-        // Encriptar la contraseña
-        const salt = bcryptjs.genSaltSync();
-        resto.password = bcryptjs.hashSync(password, salt);
-    }
+    const rolEncontrado = await Role.findOne({rol: {$in: rol}});
+    const request = new Usuario({_id: id, nombre, correo, rol: rolEncontrado._id});
 
-    const usuario = await Usuario.findByIdAndUpdate(id, resto);
+    const usuario = await Usuario.findByIdAndUpdate(id, request);
 
     res.json(usuario);
 }
