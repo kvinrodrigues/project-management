@@ -18,6 +18,7 @@ const storiesGet = async(req = request, res = response) => {
         query.proyecto = proyecto;
     }
 
+
     const [total, userstories] = await Promise.all([
         UserStories.countDocuments(query),
         UserStories.find(query)
