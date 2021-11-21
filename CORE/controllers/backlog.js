@@ -7,7 +7,7 @@ const Backlog = require('../models/backlog');
 
 
 const backlogGet = async(req = request, res = response) => {
-    const { limite = 5, desde = 0 } = req.query;
+    const { limite = Number.MAX_SAFE_INTEGER, desde = 0 } = req.query;
     const query = { estado: true };
 
     const [total, backlog] = await Promise.all([
@@ -20,6 +20,13 @@ const backlogGet = async(req = request, res = response) => {
         total,
         backlog
     })
+}
+
+
+const backlogGetByID = async(req = request, res = response) => {
+    const { id } = req.params;
+    const backlog = await Backlog.findById(id);
+    res.json(backlog);
 }
 
 const backlogPost = async(req, res = response) => {
@@ -61,6 +68,7 @@ const backlogDelete = async(req, res = response) => {
 
 module.exports = {
     backlogPost,
+    backlogGetByID,
     backlogPut,
     backlogGet,
     backlogDelete
