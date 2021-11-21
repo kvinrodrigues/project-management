@@ -1,46 +1,53 @@
-import { Project } from "./project";
+import {Project} from "./project";
 
 export interface Userstories {
-    estado: boolean;    
-    uid: string;
-    titulo: string;
-    solicitante: string;
-    descripcion: string;
-    proyecto: Project;
+    uid?: string;
+    titulo?: string;
+    solicitante?: string;
+    descripcion?: string;
+    proyecto?: Project;
+    estado?: boolean;
 
 }
 
 export class Userstories implements Userstories {
-  constructor(estado?: boolean,
-              uid?: string,
-              titulo?: string,
-              solicitante?: string,
-              descripcion?: string,
-              proyecto?: Project
-  ) {
-      if (typeof uid === 'string' ) {
-          this.uid = uid;
-      }
-    
-    if (titulo != null) {
-        this.titulo = titulo;
-    }
+    constructor(titulo?: string,
+                solicitante?: string,
+                descripcion?: string,
+                proyecto?: Project,
+                uid?: string,
+                estado?: boolean
+    ) {
+        if (
 
-    if (solicitante != null) {
-        this.solicitante = this.solicitante;
-    }
+            typeof
+                uid
+            ===
+            'string'
+        ) {
+            this
+                .uid = uid;
+        }
 
-    if (descripcion != null) {
-        this.descripcion = this.descripcion;
-    }
-    
-      if (proyecto != null) {
-          this.proyecto = proyecto;
-      }
+        if (titulo != null) {
+            this.titulo = titulo;
+        }
 
-      if (estado != null) {
-        this.estado = estado;
+        if (solicitante != null) {
+            this.solicitante = solicitante;
+        }
+
+        if (descripcion != null) {
+            this.descripcion = descripcion;
+        }
+
+        if (proyecto != null) {
+            this.proyecto = proyecto;
+        }
+
+        if (estado != null) {
+            this.estado = estado;
+        }
+
     }
-      
-  }
 }

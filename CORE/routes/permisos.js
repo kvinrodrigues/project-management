@@ -19,6 +19,9 @@ router.get('/', [
     tieneRole('CONSULTAR_PERMISO'),
 ], permisosGet);
 
+router.get('/profile', );
+
+
 router.post('/', [
     validarJWT,
     tieneRole('MODIFICAR_PERMISO'),

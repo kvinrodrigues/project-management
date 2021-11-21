@@ -5,7 +5,7 @@ const Permiso = require('../models/permiso');
 const permisosGet = async(req = request, res = response) => {
     const { limite = Number.MAX_SAFE_INTEGER, desde = 0 } = req.query;
     const query = { estado: true };
-    const uid = req.query.uid;
+    const uid = req.uid;
 
     if (uid) {
         query._id = uid;
@@ -22,6 +22,10 @@ const permisosGet = async(req = request, res = response) => {
         total,
         permisos
     })
+}
+
+const permisosActualesGet = async (req, res, next) =>{
+    console.log(req.user);
 }
 
 //Crear un permiso
