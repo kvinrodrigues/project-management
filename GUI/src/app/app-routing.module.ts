@@ -60,6 +60,13 @@ const routes: Routes = [
                 (module) => module.BacklogModule
             ),
     },
+    {
+        path: 'sprint',
+        loadChildren: () =>
+            import('./pages/sprint/sprint.module').then(
+                (module) => module.SprintModule
+            ),
+    },
 ];
 
 @NgModule({

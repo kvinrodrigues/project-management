@@ -28,6 +28,22 @@
         <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
         <span><strong>Permisos</strong></span>
       </button>
+      <button mat-menu-item routerLink="/stories" routerLinkActive="active"
+        (click)="toggle()" class="nav-button">  
+        <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
+         <span><strong>Historia Usuario</strong></span>
+       </button>
+       <button mat-menu-item routerLink="/backlog" routerLinkActive="active"
+        (click)="toggle()" class="nav-button">  
+        <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
+         <span><strong> Backlog</strong></span>
+       </button>
+       <button mat-menu-item routerLink="/sprint" routerLinkActive="active"
+       (click)="toggle()" class="nav-button">  
+       <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
+        <span><strong> Sprint</strong></span>
+      </button>
+      
     </mat-expansion-panel>
 
     <mat-expansion-panel hideToggle [expanded]="true">
@@ -53,6 +69,11 @@
               (click)="toggle()" class="nav-button">
         <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
         <span><strong> Backlog</strong></span>
+      </button>
+      <button mat-menu-item routerLink="/sprint" routerLinkActive="active"
+              (click)="toggle()" class="nav-button">
+        <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
+        <span><strong> Sprint</strong></span>
       </button>
     </mat-expansion-panel>
   </mat-accordion>
