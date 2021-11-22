@@ -14,6 +14,7 @@ const sprintGet = async(req, res = response) => {
         Sprint.countDocuments(query),
         Sprint.find(query)
         .populate('proyecto')
+        .populate('userstories')
         .skip(Number(desde))
         .limit(Number(limite))
     ]);
