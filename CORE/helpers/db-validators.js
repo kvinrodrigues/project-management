@@ -2,6 +2,7 @@ const Permiso = require('../models/permiso');
 const Role = require('../models/role');
 const Usuario = require('../models/usuario');
 const Storie = require('../models/userstories');
+const Sprint = require('../models/sprint');
 
 const esRoleValido = async(rol = '') => {
 
@@ -53,6 +54,13 @@ const existeStoriePorId = async(id) => {
     }
 }
 
+const existeSprintPorId = async(id) => {
+    const existeSprint = await Sprint.findById(id);
+    if (!existeSprint) {
+        throw new Error(`El id no existe ${id}`);
+    }
+}
+
 
 module.exports = {
     esRoleValido,
@@ -60,5 +68,6 @@ module.exports = {
     existeUsuarioPorId,
     existePermisoPorId,
     existeRolPorId,
-    existeStoriePorId
+    existeStoriePorId,
+    existeSprintPorId
 }

@@ -30,17 +30,18 @@ const backlogGetByID = async(req = request, res = response) => {
 }
 
 const backlogPost = async(req, res = response) => {
-    const { userstories } = req.body;
+    const { userstories, ...body } = req.body;
     const userstorieEncontrado = await UserStories.find({ _id: { $in: userstories } })
 
     const data = {
-
+        body,
         userstories: userstorieEncontrado.map((userstories) => userstories._id)
     }
     const backlog = new Backlog(data);
     await backlog.save();
 
     res.json({
+        body,
         backlog
     })
 }

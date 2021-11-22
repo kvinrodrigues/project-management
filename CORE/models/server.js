@@ -16,6 +16,7 @@ class Server {
         this.rolesPath = '/api/roles';
         this.storiesPath = '/api/stories';
         this.backlogPath = '/api/backlogs';
+        this.sprintPath = '/api/sprints';
 
         // Conectar a base de datos
         this.conectarDB();
@@ -53,6 +54,7 @@ class Server {
         this.app.use(this.rolesPath, require('../routes/roles'));
         this.app.use(this.storiesPath, require('../routes/userstories'));
         this.app.use(this.backlogPath, require('../routes/backlogs'));
+        this.app.use(this.sprintPath, require('../routes/sprint'));
     }
 
     listen() {
