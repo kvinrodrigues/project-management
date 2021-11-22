@@ -4,6 +4,7 @@ const { Schema } = require('mongoose');
 
 const UserStories = require('../models/userstories');
 const Backlog = require('../models/backlog');
+const Proyecto = require('../controllers/proyecto');
 
 
 const backlogGet = async(req = request, res = response) => {
@@ -32,6 +33,12 @@ const backlogGetByID = async(req = request, res = response) => {
 const backlogPost = async(req, res = response) => {
     const { userstories, ...body } = req.body;
     const userstorieEncontrado = await UserStories.find({ _id: { $in: userstories } })
+    const proyectoDB = await Proyecto.find({ proyecto: { $in: body } });
+    if (proyectoDB) {
+        return res.status(400).json({
+            msg: `Ya existe un sprint para el proyecto ${proyectoDB}`
+        })
+    }
 
     const data = {
         body,
