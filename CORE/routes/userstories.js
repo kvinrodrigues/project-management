@@ -18,6 +18,7 @@ router.get('/', [
     ],
     storiesGet);
 router.get('/:id', [
+    validarJWT,
     check('id', 'No es un id válido').isMongoId(),
     tieneRole('CONSULTAR_USERSTORIES'),
     validarCampos

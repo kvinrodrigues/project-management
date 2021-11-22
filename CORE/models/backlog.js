@@ -8,6 +8,10 @@ const BacklogSchema = Schema({
     }],
     nombre: {
         type: String
+    },
+    estado: {
+        type: Boolean,
+        default: true
     }
 });
 

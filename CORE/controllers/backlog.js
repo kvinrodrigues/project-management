@@ -14,6 +14,7 @@ const backlogGet = async(req = request, res = response) => {
     const [total, backlog] = await Promise.all([
         Backlog.countDocuments(query),
         Backlog.find(query)
+        .populate('userstories')
         .skip(Number(desde))
         .limit(Number(limite))
     ]);
@@ -26,29 +27,26 @@ const backlogGet = async(req = request, res = response) => {
 
 const backlogGetByID = async(req = request, res = response) => {
     const { id } = req.params;
-    const backlog = await Backlog.findById(id);
+    const backlog = await Backlog.findById(id)
+        .populate('userstories')
+        .populate('proyecto')
     res.json(backlog);
 }
 
 const backlogPost = async(req, res = response) => {
-    const { userstories, ...body } = req.body;
+    const { userstories, nombre } = req.body;
     const userstorieEncontrado = await UserStories.find({ _id: { $in: userstories } })
-    const proyectoDB = await Proyecto.find({ proyecto: { $in: body } });
-    if (proyectoDB) {
-        return res.status(400).json({
-            msg: `Ya existe un sprint para el proyecto ${proyectoDB}`
-        })
-    }
+
 
     const data = {
-        body,
+        nombre,
         userstories: userstorieEncontrado.map((userstories) => userstories._id)
     }
     const backlog = new Backlog(data);
     await backlog.save();
 
     res.json({
-        body,
+        nombre,
         backlog
     })
 }
