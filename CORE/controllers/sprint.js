@@ -34,13 +34,15 @@ const sprintGetByID = async(req, res = response) => {
 
 const sprintPost = async(req, res = response) => {
     const { proyecto, userstories, fecha_inicio } = req.body;
-    const sprintDB = await Sprint.findOne({ proyecto });
+    const sprintDB = await Sprint.findOne({ proyecto })
+        .populate('proyecto');
     if (sprintDB) {
         return res.status(400).json({
             msg: `Ya existe un sprint para el proyecto ${proyecto}`
         });
     }
     const data = {
+        proyecto,
         userstories,
         fecha_inicio,
         sprintDB
