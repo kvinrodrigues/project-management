@@ -29,10 +29,7 @@ export class BacklogService {
     find(uid: string): Observable<Backlog> {
         const params = new HttpParams().append('id', uid);
 
-        return this.http.get<ENTITY_LIST_RESPONSE>(`${environment.SERVER_API_URL}/backlogs`, {params})
-            .pipe(
-                map(value => value.backlog[0])
-            );
+        return this.http.get<Backlog>(`${environment.SERVER_API_URL}/backlogs/${uid}`);
     }
 
     create(backlog: Backlog): Observable<Backlog> {
