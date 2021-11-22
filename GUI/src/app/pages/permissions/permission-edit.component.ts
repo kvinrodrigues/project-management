@@ -49,7 +49,9 @@ export class PermissionEditComponent implements OnInit {
                 .subscribe(value => console.log(`Se modifico el permiso: ${value}`));
         }
 
-        setTimeout(() => {window.history.back()}, 500);
+        setTimeout(() => {
+            window.history.back()
+        }, 500);
     }
 
 }

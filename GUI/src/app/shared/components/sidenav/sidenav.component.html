@@ -1,64 +1,64 @@
 <nav class="sidenav" *ngIf="true">
-  <button mat-menu-item routerLink="/home" routerLinkActive="active" (click)="toggle()" class="nav-button">
-    <mat-icon class="mat-icon">home</mat-icon>
-    <span class="button-title"><strong>Home</strong></span>
-  </button>
-  <mat-accordion>
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon style="color: white;">settings</mat-icon>
-        </mat-panel-title>
-        <mat-panel-description>
-          <span style="color: white;"><strong>Administracion</strong></span>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <button mat-menu-item routerLink="/user" routerLinkActive="active"
-              (click)="toggle()" class="nav-button">
-        <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
-        <span><strong>Usuarios</strong></span>
-      </button>
-      <button mat-menu-item routerLink="/role" routerLinkActive="active"
-        (click)="toggle()" class="nav-button">
-        <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
-        <span><strong>Roles</strong></span>
-      </button>
-      <button mat-menu-item routerLink="/permission" routerLinkActive="active"
-              (click)="toggle()" class="nav-button">
-        <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
-        <span><strong>Permisos</strong></span>
-      </button>
-    </mat-expansion-panel>
+    <button mat-menu-item routerLink="/home" routerLinkActive="active" (click)="toggle()" class="nav-button">
+        <mat-icon class="mat-icon">home</mat-icon>
+        <span class="button-title"><strong>Home</strong></span>
+    </button>
+    <mat-accordion>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon style="color: white;">settings</mat-icon>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <span style="color: white;"><strong>Administracion</strong></span>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <button mat-menu-item routerLink="/user" routerLinkActive="active"
+                    (click)="toggle()" class="nav-button">
+                <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
+                <span><strong>Usuarios</strong></span>
+            </button>
+            <button mat-menu-item routerLink="/role" routerLinkActive="active"
+                    (click)="toggle()" class="nav-button">
+                <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
+                <span><strong>Roles</strong></span>
+            </button>
+            <button mat-menu-item routerLink="/permission" routerLinkActive="active"
+                    (click)="toggle()" class="nav-button">
+                <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
+                <span><strong>Permisos</strong></span>
+            </button>
+        </mat-expansion-panel>
 
-    <mat-expansion-panel hideToggle [expanded]="true">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon style="color: white;">Book</mat-icon>
-        </mat-panel-title>
-        <mat-panel-description>
-          <span style="color: white;"><strong>Gestion de Proyectos</strong></span>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <button mat-menu-item routerLink="/project" routerLinkActive="active"
-              (click)="toggle()" class="nav-button">
-        <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
-        <span><strong>Proyectos</strong></span>
-      </button>
-      <button mat-menu-item routerLink="/stories" routerLinkActive="active"
-              (click)="toggle()" class="nav-button">
-        <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
-        <span><strong>Historia Usuario</strong></span>
-      </button>
-      <button mat-menu-item routerLink="/backlog" routerLinkActive="active"
-              (click)="toggle()" class="nav-button">
-        <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
-        <span><strong> Backlog</strong></span>
-      </button>
-      <button mat-menu-item routerLink="/sprint" routerLinkActive="active"
-              (click)="toggle()" class="nav-button">
-        <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
-        <span><strong> Sprint</strong></span>
-      </button>
-    </mat-expansion-panel>
-  </mat-accordion>
+        <mat-expansion-panel hideToggle [expanded]="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon style="color: white;">Book</mat-icon>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <span style="color: white;"><strong>Gestion de Proyectos</strong></span>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <button mat-menu-item routerLink="/project" routerLinkActive="active"
+                    (click)="toggle()" class="nav-button">
+                <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
+                <span><strong>Proyectos</strong></span>
+            </button>
+            <button mat-menu-item routerLink="/stories" routerLinkActive="active"
+                    (click)="toggle()" class="nav-button">
+                <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
+                <span><strong>Historia Usuario</strong></span>
+            </button>
+            <button mat-menu-item routerLink="/backlog" routerLinkActive="active"
+                    (click)="toggle()" class="nav-button">
+                <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
+                <span><strong> Backlog</strong></span>
+            </button>
+            <button mat-menu-item routerLink="/sprint" routerLinkActive="active"
+                    (click)="toggle()" class="nav-button">
+                <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
+                <span><strong> Sprint</strong></span>
+            </button>
+        </mat-expansion-panel>
+    </mat-accordion>
 </nav>

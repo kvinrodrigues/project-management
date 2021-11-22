@@ -60,7 +60,9 @@ export class UserEditComponent implements OnInit {
                 .subscribe(value => console.log(`Se modifico el usuario: ${value}`));
         }
 
-        setTimeout(() => {window.history.back();}, 500)
+        setTimeout(() => {
+            window.history.back();
+        }, 500)
     }
 
     compareRolesObjects(object1: Rol, object2: any) {

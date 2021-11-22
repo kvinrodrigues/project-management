@@ -1,6 +1,6 @@
-import { Injectable, NgModule } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterModule, RouterStateSnapshot, Routes } from '@angular/router';
-import { ProjectComponent } from './project.component';
+import {Injectable, NgModule} from '@angular/core';
+import {ActivatedRouteSnapshot, Resolve, RouterModule, RouterStateSnapshot, Routes} from '@angular/router';
+import {ProjectComponent} from './project.component';
 import {ProjectEditComponent} from "./project-edit.component";
 import {Project} from "../../shared/models/project";
 import {ProjectService} from "../../shared/services/project.service";
@@ -21,27 +21,29 @@ export class ProjectResolve implements Resolve<Project> {
 }
 
 const routes: Routes = [
-  { path: '', 
-    component: ProjectComponent 
-  },
-  {
-    path: ':uid/edit',
-    component: ProjectEditComponent,
-    resolve: {
-      data: ProjectResolve
+    {
+        path: '',
+        component: ProjectComponent
+    },
+    {
+        path: ':uid/edit',
+        component: ProjectEditComponent,
+        resolve: {
+            data: ProjectResolve
+        }
+    },
+    {
+        path: 'create',
+        component: ProjectEditComponent,
+        resolve: {
+            data: ProjectResolve
+        }
     }
-  },
-  {
-    path: 'create',
-    component: ProjectEditComponent,
-    resolve: {
-      data: ProjectResolve
-    }
-  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
-export class ProjectRoutingModule { } 
+export class ProjectRoutingModule {
+}

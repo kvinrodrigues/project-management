@@ -14,7 +14,7 @@ export type ENTITY_LIST_RESPONSE = {
     "total": Number,
     "proyectos": Project[]
 }
- 
+
 @Injectable({
     providedIn: 'root',
 })
@@ -48,4 +48,3 @@ export class ProjectService {
     }
 }
 
-  

@@ -23,7 +23,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
-  declarations: [RolComponent, RolEditComponent],
+    declarations: [RolComponent, RolEditComponent],
     imports: [
         CommonModule,
         RolRoutingModule,
@@ -42,4 +42,5 @@ import {MatSelectModule} from "@angular/material/select";
         MatSelectModule,
     ],
 })
-export class RolModule {}
+export class RolModule {
+}

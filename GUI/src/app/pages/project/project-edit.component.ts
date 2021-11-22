@@ -5,7 +5,6 @@ import {ProjectService} from "../../shared/services/project.service";
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../shared/services/user.service";
 import {User} from "../../shared/models/user";
-import {Permission} from "../../shared/models/permission";
 
 @Component({
     selector: 'app-project-edit',

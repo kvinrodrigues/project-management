@@ -1,6 +1,6 @@
-import { Injectable, NgModule } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterModule, RouterStateSnapshot, Routes } from '@angular/router';
-import { BacklogComponent } from './backlog.component';
+import {Injectable, NgModule} from '@angular/core';
+import {ActivatedRouteSnapshot, Resolve, RouterModule, RouterStateSnapshot, Routes} from '@angular/router';
+import {BacklogComponent} from './backlog.component';
 import {BacklogEditComponent} from "./backlog-edit.component";
 import {Backlog} from "../../shared/models/backlog";
 import {BacklogService} from "../../shared/services/backlog.service";
@@ -21,26 +21,29 @@ export class BacklogResolve implements Resolve<Backlog> {
 }
 
 const routes: Routes = [
-  { path: '', 
-    component: BacklogComponent },
     {
-      path: ':uid/edit',
-      component: BacklogEditComponent,
-      resolve: {
-        data: BacklogResolve
-      }
+        path: '',
+        component: BacklogComponent
     },
     {
-      path: 'create',
-      component: BacklogEditComponent,
-      resolve: {
-        data: BacklogResolve
-      }
+        path: ':uid/edit',
+        component: BacklogEditComponent,
+        resolve: {
+            data: BacklogResolve
+        }
+    },
+    {
+        path: 'create',
+        component: BacklogEditComponent,
+        resolve: {
+            data: BacklogResolve
+        }
     }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
-export class BacklogRoutingModule { } 
+export class BacklogRoutingModule {
+}

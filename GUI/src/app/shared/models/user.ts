@@ -1,12 +1,12 @@
 export interface User {
-      estado: boolean;
-      nombre: string;
-      correo: string;
-      rol: string;
-      uid: string;
-  }
+    estado: boolean;
+    nombre: string;
+    correo: string;
+    rol: string;
+    uid: string;
+}
 
-  export class User implements User {
+export class User implements User {
     constructor(nombre?: string,
                 correo?: string,
                 rol?: string,

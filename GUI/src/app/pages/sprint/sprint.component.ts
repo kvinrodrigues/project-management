@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SprintService} from "../../shared/services/sprint.service";
 import {Router} from "@angular/router";
-import { Sprint } from 'src/app/shared/models/sprint';
+import {Sprint} from 'src/app/shared/models/sprint';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { Sprint } from 'src/app/shared/models/sprint';
     styleUrls: ['./sprint.component.scss']
 })
 export class SprintComponent implements OnInit {
-    displayedColumns: string[] = [  'estado','_id', 'proyecto','fecha_inicio','acciones'];
+    displayedColumns: string[] = ['proyecto', 'fecha_inicio', '_id', 'estado', 'acciones'];
     dataSource: Sprint[] = [];
 
     constructor(private router: Router, private SprintService: SprintService) {
@@ -22,9 +22,9 @@ export class SprintComponent implements OnInit {
 
     findSprint() {
         this.SprintService.list()
-        .subscribe(response => {
-            this.dataSource = response.sprint;
-        });
+            .subscribe(response => {
+                this.dataSource = response.sprint;
+            });
     }
 
     navigateToEditSprint(_id: string) {
@@ -37,9 +37,9 @@ export class SprintComponent implements OnInit {
 
     delete(element: Sprint) {
         this.SprintService.delete(element).subscribe(value => {
-           if (value) {
-               this.findSprint();
-           }
+            if (value) {
+                this.findSprint();
+            }
         });
     }
 }

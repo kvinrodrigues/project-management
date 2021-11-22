@@ -18,9 +18,9 @@ export class RolEditComponent implements OnInit {
     isNew: boolean = true;
 
     constructor(private rolService: RolService,
-        private permissionService: PermissionsService,
-        private formBuilder: FormBuilder,
-        private activatedRoute: ActivatedRoute) {
+                private permissionService: PermissionsService,
+                private formBuilder: FormBuilder,
+                private activatedRoute: ActivatedRoute) {
     }
 
 
@@ -47,7 +47,7 @@ export class RolEditComponent implements OnInit {
 
     private findAvailablePermissions() {
         this.permissionService.list().subscribe(value => {
-          this.availablePermissions = value.permisos;
+            this.availablePermissions = value.permisos;
         })
     }
 

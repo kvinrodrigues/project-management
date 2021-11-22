@@ -1,6 +1,6 @@
-import { Injectable, NgModule } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterModule, RouterStateSnapshot, Routes } from '@angular/router';
-import { SprintComponent } from './sprint.component';
+import {Injectable, NgModule} from '@angular/core';
+import {ActivatedRouteSnapshot, Resolve, RouterModule, RouterStateSnapshot, Routes} from '@angular/router';
+import {SprintComponent} from './sprint.component';
 import {SprintEditComponent} from "./sprint-edit.component";
 import {Sprint} from "../../shared/models/sprint";
 import {SprintService} from "../../shared/services/sprint.service";
@@ -21,26 +21,29 @@ export class UserResolve implements Resolve<Sprint> {
 }
 
 const routes: Routes = [
-  { path: '', 
-    component: SprintComponent },
     {
-      path: ':uid/edit',
-      component: SprintEditComponent,
-      resolve: {
-        data: UserResolve
-      }
+        path: '',
+        component: SprintComponent
     },
     {
-      path: 'create',
-      component: SprintEditComponent,
-      resolve: {
-        data: UserResolve
-      }
+        path: ':uid/edit',
+        component: SprintEditComponent,
+        resolve: {
+            data: UserResolve
+        }
+    },
+    {
+        path: 'create',
+        component: SprintEditComponent,
+        resolve: {
+            data: UserResolve
+        }
     }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
-export class SpirntRoutingModule { } 
+export class SpirntRoutingModule {
+}

@@ -21,9 +21,9 @@ export class UserComponent implements OnInit {
 
     findUsers() {
         this.userService.list()
-        .subscribe(response => {
-            this.dataSource = response.usuarios;
-        });
+            .subscribe(response => {
+                this.dataSource = response.usuarios;
+            });
     }
 
     navigateToEditUser(uid: string) {
@@ -36,9 +36,9 @@ export class UserComponent implements OnInit {
 
     delete(element: User) {
         this.userService.delete(element).subscribe(value => {
-           if (value) {
-               this.findUsers();
-           }
+            if (value) {
+                this.findUsers();
+            }
         });
     }
 }

@@ -3,11 +3,10 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Userstories} from "../../shared/models/userstories";
 import {UserstoriesService} from "../../shared/services/userstories.service";
 import {ActivatedRoute} from "@angular/router";
-import { ProjectService } from 'src/app/shared/services/project.service';
-import { Observable } from 'rxjs';
-import { Project } from 'src/app/shared/models/project';
-import { map } from 'rxjs/operators';
-import {Rol} from "../../shared/models/rol";
+import {ProjectService} from 'src/app/shared/services/project.service';
+import {Observable} from 'rxjs';
+import {Project} from 'src/app/shared/models/project';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'app-userstories-edit',
@@ -62,7 +61,9 @@ export class UserstoriesEditComponent implements OnInit {
                 .subscribe(value => console.log(`Se modifico la historia de usuario: ${value}`));
         }
 
-        setTimeout(() => {window.history.back();}, 500)
+        setTimeout(() => {
+            window.history.back();
+        }, 500)
     }
 
     compareProjectsObjects(object1: Project, object2: any) {

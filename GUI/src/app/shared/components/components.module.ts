@@ -1,22 +1,22 @@
 // Angular
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 // Material
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatExpansionModule } from '@angular/material/expansion';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 // Project
-import { NavbarComponent } from './navbar/navbar.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
+import {NavbarComponent} from './navbar/navbar.component';
+import {SidenavComponent} from './sidenav/sidenav.component';
 import {FlexModule} from "@angular/flex-layout";
 import {MatButtonModule} from "@angular/material/button";
 import {RouterModule} from "@angular/router";
 
 @NgModule({
-  declarations: [NavbarComponent, SidenavComponent],
+    declarations: [NavbarComponent, SidenavComponent],
     imports: [
         CommonModule,
         MatToolbarModule,
@@ -27,6 +27,7 @@ import {RouterModule} from "@angular/router";
         MatButtonModule,
         RouterModule,
     ],
-  exports: [NavbarComponent, SidenavComponent],
+    exports: [NavbarComponent, SidenavComponent],
 })
-export class ComponentsModule {}
+export class ComponentsModule {
+}

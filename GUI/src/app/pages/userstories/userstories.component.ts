@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
     styleUrls: ['./userstories.component.scss']
 })
 export class UserstoriesComponent implements OnInit {
-    displayedColumns: string[] = ['estado','uid','titulo','solicitante',  'descripcion' ,'proyecto','acciones'];
+    displayedColumns: string[] = ['estado', 'uid', 'titulo', 'solicitante', 'descripcion', 'proyecto', 'acciones'];
     dataSource: Userstories[] = [];
 
     constructor(private router: Router, private userstoriesService: UserstoriesService) {
@@ -21,9 +21,9 @@ export class UserstoriesComponent implements OnInit {
 
     findUserstories() {
         this.userstoriesService.list()
-        .subscribe(response => {
-            this.dataSource = response.userstories;
-        });
+            .subscribe(response => {
+                this.dataSource = response.userstories;
+            });
     }
 
     navigateToEditUserstories(uid: string) {
@@ -36,9 +36,9 @@ export class UserstoriesComponent implements OnInit {
 
     delete(element: Userstories) {
         this.userstoriesService.delete(element).subscribe(value => {
-           if (value) {
-               this.findUserstories();
-           }
+            if (value) {
+                this.findUserstories();
+            }
         });
     }
 }

@@ -4,7 +4,7 @@
         <div class="form-container__input" fxLayoutAlign="center stretch">
             <mat-form-field appearance="outline">
                 <mat-label>Proyecto</mat-label>
-                <label >
+                <label>
                     <mat-select [disabled]="!isNew" formControlName="proyecto" placeholder="Seleccione un proyecto"
                                 [compareWith]="compareProjectsObjects">
                         <mat-option *ngFor="let option of projectObservable | async" [value]="option">
