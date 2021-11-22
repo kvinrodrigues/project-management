@@ -5,9 +5,9 @@ import {SprintService} from "../../shared/services/sprint.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
-    selector: 'app-Sprint-edit',
-    templateUrl: './Sprint-edit.component.html',
-    styleUrls: ['./Sprint-edit.component.scss']
+    selector: 'app-sprint-edit',
+    templateUrl: './sprint-edit.component.html',
+    styleUrls: ['./sprint-edit.component.scss']
 })
 export class SprintEditComponent implements OnInit {
     dataValidationForm: FormGroup = this.formBuilder.group({});
@@ -36,7 +36,7 @@ export class SprintEditComponent implements OnInit {
     }
 
     callOnSubmit(): void {
-      
+
     }
 
 }

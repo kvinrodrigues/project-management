@@ -1,33 +1,29 @@
-import { Userstories } from "./userstories";
+import {Userstories} from "./userstories";
 
 export interface Backlog {
-    userstories: Userstories;
+    userstories: Userstories[];
     nombre: string;
-    uid: string;
+    _id: string;
     estado: Boolean;
-    
 }
 
 export class Backlog implements Backlog {
-  constructor(estado?: Boolean,
-              nombre?: string,
-              uid?: string,
-              userstories?: Userstories
-             
-  ) {
-    if   (estado != null) {
-        this.estado = estado;
+    constructor(nombre?: string,
+                userstories?: Userstories[],
+                _id?: string,
+                estado?: Boolean
+    ) {
+        if (estado != null) {
+            this.estado = estado;
+        }
+        if (typeof _id === "string") {
+            this._id = _id;
+        }
+        if (nombre != null) {
+            this.nombre = nombre;
+        }
+        if (userstories != null) {
+            this.userstories = userstories;
+        }
     }
-      if (typeof uid === "string") {
-      this.uid = uid;
-     }
-      if (nombre != null) {
-          this.nombre = nombre;
-      }
-      if (userstories != null) {
-        this.userstories = userstories;
-    }
-    
-      
-  }
 }

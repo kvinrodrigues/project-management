@@ -2,7 +2,6 @@
     <h1>Crear o editar Backlog</h1>
     <form [formGroup]="dataValidationForm" (ngSubmit)="callOnSubmit()">
         <div class="form-container__input" fxLayoutAlign="center stretch">
-            
             <mat-form-field appearance="outline">
                 <mat-label>Nombre</mat-label>
                 <label for="nombre">
@@ -10,7 +9,14 @@
                            placeholder="Nombre del Backlog">
                 </label>
             </mat-form-field>
-
+        </div>
+        <div class="form-container__input" fxLayoutAlign="center stretch">
+            <mat-form-field appearance="fill">
+                <mat-label>Historias de Usuario</mat-label>
+                <mat-select formControlName="userstories" multiple [compareWith]="compareUserStoriesObjects">
+                    <mat-option *ngFor="let value of availableUserStories | async" [value]="value">{{value.titulo}}</mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
 
         <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
