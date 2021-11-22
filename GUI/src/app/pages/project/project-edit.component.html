@@ -25,7 +25,7 @@
         <div class="form-container__input" fxLayoutAlign="center stretch">
             <mat-form-field appearance="fill">
                 <mat-label>Miembros</mat-label>
-                <mat-select formControlName="users" multiple>
+                <mat-select formControlName="users" multiple [compareWith]="compareMembersObjects">
                     <mat-option *ngFor="let value of availableUsers" [value]="value">{{value.nombre}}</mat-option>
                 </mat-select>
             </mat-form-field>

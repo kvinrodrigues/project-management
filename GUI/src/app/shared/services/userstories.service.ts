@@ -12,7 +12,7 @@ import {map} from "rxjs/operators";
 
 export type ENTITY_LIST_RESPONSE = {
     "total": Number,
-    "stories": Userstories[]
+    "userstories": Userstories[]
 }
 
 @Injectable({
@@ -31,7 +31,7 @@ export class UserstoriesService {
 
         return this.http.get<ENTITY_LIST_RESPONSE>(`${environment.SERVER_API_URL}/stories`, {params})
             .pipe(
-                map(value => value.stories[0])
+                map(value => value.userstories[0])
             );
     }
 

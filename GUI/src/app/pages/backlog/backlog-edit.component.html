@@ -2,11 +2,12 @@
     <h1>Crear o editar Backlog</h1>
     <form [formGroup]="dataValidationForm" (ngSubmit)="callOnSubmit()">
         <div class="form-container__input" fxLayoutAlign="center stretch">
+            
             <mat-form-field appearance="outline">
                 <mat-label>Nombre</mat-label>
-                <label for="nombre_proyecto">
-                    <input id="nombre_proyecto" fxFlexFill formControlName="nombre_proyecto" matInput
-                           placeholder="Nombre del proyecto">
+                <label for="nombre">
+                    <input id="nombre" fxFlexFill formControlName="nombre" matInput
+                           placeholder="Nombre del Backlog">
                 </label>
             </mat-form-field>
 

@@ -22,7 +22,7 @@ export class UserstoriesEditComponent implements OnInit {
     constructor(private userstoriesService: UserstoriesService,
                 private formBuilder: FormBuilder,
                 private activatedRoute: ActivatedRoute,
-                private projectService: ProjectService) {    
+                private projectService: ProjectService) {
     }
 
     ngOnInit(): void {
@@ -47,8 +47,10 @@ export class UserstoriesEditComponent implements OnInit {
     }
 
     callOnSubmit() {
-        let userstories = new Userstories(this.dataValidationForm?.value.proyecto,
-            )
+        let userstories = new Userstories(this.dataValidationForm?.value.titulo,
+            this.dataValidationForm?.value.solicitante,
+            this.dataValidationForm?.value.descripcion,
+            this.dataValidationForm?.value.proyecto.nombre_proyecto)
 
         if (this.isNew) {
             this.userstoriesService.create(userstories)

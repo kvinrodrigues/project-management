@@ -12,7 +12,7 @@ import {ProjectService} from "../../shared/services/project.service";
   styleUrls: ['./project.component.scss']
 })
 export class ProjectComponent implements OnInit {
-    displayedColumns: string[] = ['estado', 'usuarios', 'nombre_proyecto', 'descripcion', 'uid', 'acciones'];
+    displayedColumns: string[] = ['estado', 'nombre_proyecto', 'descripcion', 'uid', 'acciones'];
     dataSource: Project[] = [];
 
     constructor(private router: Router, private projectService: ProjectService) {
@@ -38,4 +38,3 @@ export class ProjectComponent implements OnInit {
     }
 
 }
- 

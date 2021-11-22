@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
     styleUrls: ['./backlog.component.scss']
 })
 export class BacklogComponent implements OnInit {
-    displayedColumns: string[] = [  'uid', 'backlog','acciones'];
+    displayedColumns: string[] = [  'estado','uid', 'nombre','userstories','acciones'];
     dataSource: Backlog[] = [];
 
     constructor(private router: Router, private BacklogService: BacklogService) {

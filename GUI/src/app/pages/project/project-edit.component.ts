@@ -5,6 +5,7 @@ import {ProjectService} from "../../shared/services/project.service";
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../shared/services/user.service";
 import {User} from "../../shared/models/user";
+import {Permission} from "../../shared/models/permission";
 
 @Component({
     selector: 'app-project-edit',
@@ -37,7 +38,7 @@ export class ProjectEditComponent implements OnInit {
             this.dataValidationForm = this.formBuilder.group({
                 nombre_proyecto: [data.nombre_proyecto, [Validators.required]],
                 descripcion: [data.descripcion, [Validators.required]],
-                users: [data?.users],
+                users: [data?.usuarios],
                 uid: [data.uid],
             });
         });
@@ -51,8 +52,12 @@ export class ProjectEditComponent implements OnInit {
     }
 
     callOnSubmit() {
+        const membersOfTheProject: User[] = this.dataValidationForm.value.users;
+        let membersIdentifiers = membersOfTheProject.map(value => value.uid);
+
         let project = new Project(this.dataValidationForm?.value.nombre_proyecto,
             this.dataValidationForm?.value.descripcion,
+            membersIdentifiers,
             this.dataValidationForm?.value.uid)
 
         if (this.isNew) {
@@ -68,5 +73,8 @@ export class ProjectEditComponent implements OnInit {
         }, 500);
     }
 
+    compareMembersObjects(object1: User, object2: any) {
+        return object1 && object2 && object1.uid == object2._id;
+    }
 
 }
