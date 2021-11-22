@@ -5,6 +5,7 @@ import {map} from "rxjs/operators";
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {ValueUnavailableKind} from "@angular/compiler-cli/src/ngtsc/reflection";
 
 export type ENTITY_LIST_RESPONSE = {
     "total": Number,
@@ -32,7 +33,13 @@ export class SprintService {
     }
 
     create(sprint: Sprint): Observable<Sprint> {
-        return this.http.post<Sprint>(`${environment.SERVER_API_URL}/sprints`, sprint);
+        let userStoriesIdentifiers = sprint.userstories.map(value => value._id);
+        const request = {
+            "proyecto": sprint.proyecto.uid,
+            "userstories": userStoriesIdentifiers
+        };
+
+        return this.http.post<Sprint>(`${environment.SERVER_API_URL}/sprints`, request);
     }
 
     edit(sprint: Sprint): Observable<Sprint> {

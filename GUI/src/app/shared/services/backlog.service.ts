@@ -1,6 +1,6 @@
 // Angular
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
 // Rx
 import {Observable} from 'rxjs';
@@ -8,7 +8,6 @@ import {Observable} from 'rxjs';
 // Project
 import {environment} from 'src/environments/environment';
 import {Backlog} from '../models/backlog';
-import {map} from "rxjs/operators";
 
 export type ENTITY_LIST_RESPONSE = {
     "total": Number,
@@ -27,8 +26,6 @@ export class BacklogService {
     }
 
     find(uid: string): Observable<Backlog> {
-        const params = new HttpParams().append('id', uid);
-
         return this.http.get<Backlog>(`${environment.SERVER_API_URL}/backlogs/${uid}`);
     }
 
