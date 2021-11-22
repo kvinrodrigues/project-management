@@ -7,6 +7,7 @@ import { ProjectService } from 'src/app/shared/services/project.service';
 import { Observable } from 'rxjs';
 import { Project } from 'src/app/shared/models/project';
 import { map } from 'rxjs/operators';
+import {Rol} from "../../shared/models/rol";
 
 @Component({
     selector: 'app-userstories-edit',
@@ -31,7 +32,7 @@ export class UserstoriesEditComponent implements OnInit {
 
     private buildForm(): void {
         this.activatedRoute.data.subscribe(({data}) => {
-            if (data?.uid) {
+            if (data?._id) {
                 this.isNew = false;
             }
 
@@ -40,7 +41,7 @@ export class UserstoriesEditComponent implements OnInit {
                 solicitante: [data.solicitante, [Validators.required]],
                 descripcion: [data.descripcion, [Validators.required]],
                 proyecto: [data.proyecto, [Validators.required]],
-                uid: [data.uid],
+                uid: [data._id],
             });
 
         });
@@ -50,7 +51,8 @@ export class UserstoriesEditComponent implements OnInit {
         let userstories = new Userstories(this.dataValidationForm?.value.titulo,
             this.dataValidationForm?.value.solicitante,
             this.dataValidationForm?.value.descripcion,
-            this.dataValidationForm?.value.proyecto.nombre_proyecto)
+            this.dataValidationForm?.value.proyecto.nombre_proyecto,
+            this.dataValidationForm?.value.uid)
 
         if (this.isNew) {
             this.userstoriesService.create(userstories)
@@ -63,4 +65,7 @@ export class UserstoriesEditComponent implements OnInit {
         setTimeout(() => {window.history.back();}, 500)
     }
 
+    compareProjectsObjects(object1: Project, object2: any) {
+        return object1 && object2 && object1.uid == object2.uid;
+    }
 }

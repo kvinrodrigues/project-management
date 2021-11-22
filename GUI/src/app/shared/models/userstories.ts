@@ -1,7 +1,7 @@
 import {Project} from "./project";
 
 export interface Userstories {
-    uid?: string;
+    _id?: string;
     titulo?: string;
     solicitante?: string;
     descripcion?: string;
@@ -15,18 +15,11 @@ export class Userstories implements Userstories {
                 solicitante?: string,
                 descripcion?: string,
                 proyecto?: Project,
-                uid?: string,
+                _id?: string,
                 estado?: boolean
     ) {
-        if (
-
-            typeof
-                uid
-            ===
-            'string'
-        ) {
-            this
-                .uid = uid;
+        if (typeof _id === 'string') {
+            this._id = _id;
         }
 
         if (titulo != null) {
