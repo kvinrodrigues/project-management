@@ -15,6 +15,11 @@ const SprintSchema = Schema({
         required: false,
         default: Date.now()
     },
+    fecha_fin: {
+        type: Date,
+        required: false,
+        default: null
+    },
     estado: {
         type: Boolean,
         default: true

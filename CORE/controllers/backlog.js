@@ -27,7 +27,9 @@ const backlogGet = async(req = request, res = response) => {
 
 const backlogGetByID = async(req = request, res = response) => {
     const { id } = req.params;
-    const backlog = await Backlog.findById(id);
+    const backlog = await Backlog.findById(id)
+        .populate('userstories')
+        .populate('proyecto')
     res.json(backlog);
 }
 
