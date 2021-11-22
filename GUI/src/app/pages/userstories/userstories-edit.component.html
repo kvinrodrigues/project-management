@@ -40,9 +40,10 @@
             <mat-form-field appearance="outline">
                 <mat-label>Proyecto</mat-label>
                 <label >
-                    <mat-select formControlName="proyecto" placeholder="Seleccione un proyecto">
+                    <mat-select formControlName="proyecto" placeholder="Seleccione un proyecto"
+                                [compareWith]="compareProjectsObjects">
                         <mat-option *ngFor="let option of projectObservable | async" [value]="option">
-                            {{option.descripcion}}
+                            {{option.nombre_proyecto}}
                         </mat-option>
                     </mat-select>
                 </label>

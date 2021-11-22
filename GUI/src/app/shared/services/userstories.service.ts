@@ -40,10 +40,10 @@ export class UserstoriesService {
     }
 
     edit(stories: Userstories): Observable<Userstories> {
-        return this.http.put<Userstories>(`${environment.SERVER_API_URL}/stories/${stories.uid}`, stories);
+        return this.http.put<Userstories>(`${environment.SERVER_API_URL}/stories/${stories._id}`, stories);
     }
 
     delete(stories: Userstories): Observable<Userstories> {
-        return this.http.delete<Userstories>(`${environment.SERVER_API_URL}/stories/${stories.uid}`);
+        return this.http.delete<Userstories>(`${environment.SERVER_API_URL}/stories/${stories._id}`);
     }
 }
