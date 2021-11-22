@@ -38,14 +38,14 @@ export class SprintEditComponent implements OnInit {
 
     private buildForm(): void {
         this.activatedRoute.data.subscribe(({data}) => {
-            if (data?.uid) {
+            if (data?._id) {
                 this.isNew = false;
             }
 
             this.dataValidationForm = this.formBuilder.group({
                 userstories: [data.userstories, [Validators.required]],
                 proyecto: [data.proyecto, [Validators.required]],
-                uid: [data.uid],
+                uid: [data._id],
             });
         });
     }

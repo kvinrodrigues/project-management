@@ -10,7 +10,7 @@ import { Sprint } from 'src/app/shared/models/sprint';
     styleUrls: ['./sprint.component.scss']
 })
 export class SprintComponent implements OnInit {
-    displayedColumns: string[] = [  'estado','_id', 'proyecto','userstories','fecha_inicio','acciones'];
+    displayedColumns: string[] = [  'estado','_id', 'proyecto','fecha_inicio','acciones'];
     dataSource: Sprint[] = [];
 
     constructor(private router: Router, private SprintService: SprintService) {
