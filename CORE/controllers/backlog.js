@@ -53,11 +53,11 @@ const backlogPost = async(req, res = response) => {
 
 const backlogPut = async(req, res = response) => {
     const { id } = req.params;
-    const { userstories } = req.body;
+    const { userstories, nombre } = req.body;
     const userstorieEncontrado = await UserStories.find({ _id: { $in: userstories } })
 
     const data = {
-
+        nombre,
         userstories: userstorieEncontrado.map((userstories) => userstories._id)
     }
 
