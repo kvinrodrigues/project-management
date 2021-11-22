@@ -16,18 +16,18 @@ import {MatSelectModule} from '@angular/material/select';
 
 
 // Project
-import {BacklogRoutingModule} from './backlog-routing.module';
-import {BacklogComponent} from './backlog.component';
+import {SpirntRoutingModule} from './sprint-routing.module';
+import {SprintComponent} from './sprint.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {BacklogEditComponent} from './backlog-edit.component';
+import {SprintEditComponent} from './sprint-edit.component';
 import {MatInputModule} from "@angular/material/input";
 import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
-    declarations: [BacklogComponent, BacklogEditComponent],
+    declarations: [SprintComponent, SprintEditComponent],
     imports: [
         CommonModule,
-        BacklogRoutingModule,
+        SpirntRoutingModule,
         MatCardModule,
         MatIconModule,
         MatProgressBarModule,
@@ -43,5 +43,5 @@ import {FlexLayoutModule} from "@angular/flex-layout";
         FlexLayoutModule,
     ],
 })
-export class BacklogModule {
+export class SprintModule {
 }

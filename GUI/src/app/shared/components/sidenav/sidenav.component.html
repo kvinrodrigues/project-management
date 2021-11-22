@@ -4,7 +4,7 @@
     <span class="button-title"><strong>Home</strong></span>
   </button>
   <mat-accordion>
-    <mat-expansion-panel hideToggle [expanded]="true">
+    <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon style="color: white;">settings</mat-icon>
@@ -53,6 +53,11 @@
               (click)="toggle()" class="nav-button">
         <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
         <span><strong> Backlog</strong></span>
+      </button>
+      <button mat-menu-item routerLink="/sprint" routerLinkActive="active"
+              (click)="toggle()" class="nav-button">
+        <mat-icon class="mat-icon">keyboard_arrow_right</mat-icon>
+        <span><strong> Sprint</strong></span>
       </button>
     </mat-expansion-panel>
   </mat-accordion>

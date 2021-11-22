@@ -1,28 +1,33 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Backlog} from "../../shared/models/backlog";
-import {BacklogService} from "../../shared/services/backlog.service";
+
+import {SprintService} from "../../shared/services/sprint.service";
 import {ActivatedRoute} from "@angular/router";
-import {Userstories} from "../../shared/models/userstories";
-import {UserstoriesService} from "../../shared/services/userstories.service";
-import {map} from "rxjs/operators";
-import {Observable} from "rxjs";
 import {Project} from "../../shared/models/project";
+import {Sprint} from "../../shared/models/sprint";
+import {Observable} from "rxjs";
+import {Userstories} from "../../shared/models/userstories";
+import {map} from "rxjs/operators";
+import {UserstoriesService} from "../../shared/services/userstories.service";
+import {ProjectService} from "../../shared/services/project.service";
 
 @Component({
-    selector: 'app-backlog-edit',
-    templateUrl: './backlog-edit.component.html',
-    styleUrls: ['./backlog-edit.component.scss']
+    selector: 'app-sprint-edit',
+    templateUrl: './sprint-edit.component.html',
+    styleUrls: ['./sprint-edit.component.scss']
 })
-export class BacklogEditComponent implements OnInit {
+export class SprintEditComponent implements OnInit {
     dataValidationForm: FormGroup = this.formBuilder.group({});
 
     availableUserStories: Observable<Userstories[]> = this.userstoriesService.list()
         .pipe(map((value => value.userstories)));
+    projectObservable: Observable<Project[]> = this.projectService.list()
+        .pipe(map((value => value.proyectos)));
     isNew: boolean = true;
 
-    constructor(private backlogService: BacklogService,
+    constructor(private sprintService: SprintService,
                 private userstoriesService: UserstoriesService,
+                private projectService: ProjectService,
                 private formBuilder: FormBuilder,
                 private activatedRoute: ActivatedRoute) {
     }
@@ -38,24 +43,24 @@ export class BacklogEditComponent implements OnInit {
             }
 
             this.dataValidationForm = this.formBuilder.group({
-                nombre: [data.nombre, [Validators.required]],
                 userstories: [data.userstories, [Validators.required]],
+                proyecto: [data.proyecto, [Validators.required]],
                 uid: [data._id],
             });
         });
     }
 
-    callOnSubmit() {
-        let backlog = new Backlog(this.dataValidationForm?.value?.nombre,
+    callOnSubmit(): void {
+        let sprint = new Sprint(this.dataValidationForm?.value?.proyecto,
             this.dataValidationForm?.value?.userstories,
             this.dataValidationForm?.value?.uid)
 
         if (this.isNew) {
-            this.backlogService.create(backlog)
-                .subscribe(value => console.log(`Se creo la historia de usuario: ${value}`));
+            this.sprintService.create(sprint)
+                .subscribe(value => console.log(`Se creo el sprint: ${value}`));
         } else {
-            this.backlogService.edit(backlog)
-                .subscribe(value => console.log(`Se modifico la historia de usuario: ${value}`));
+            this.sprintService.edit(sprint)
+                .subscribe(value => console.log(`Se modifico el sprint: ${value}`));
         }
 
         setTimeout(() => {
@@ -67,4 +72,7 @@ export class BacklogEditComponent implements OnInit {
         return object1 && object2 && object1.uid == object2.uid;
     }
 
+    compareProjectsObjects(object1: Project, object2: any) {
+        return object1 && object2 && object1.uid == object2.uid;
+    }
 }
